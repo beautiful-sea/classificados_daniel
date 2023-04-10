@@ -167,7 +167,6 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('error', 'Erro ao atualizar o usuário!');
         }
 
-
     }
 
     /**

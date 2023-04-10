@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -23,9 +23,7 @@ INSERT INTO administradores (id, cargo,user_id) VALUES (1, 'Gerente', 2);]]></co
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="3b853c06-7b4e-4c43-96cf-9db02536b5e9" object-ref="schemas/daniel/tables/users" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="3b853c06-7b4e-4c43-96cf-9db02536b5e9" dataset="daniel.users" active-filter-id="EMPTY_FILTER">
