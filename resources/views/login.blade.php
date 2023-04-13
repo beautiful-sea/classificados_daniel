@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Categorias')
+@section('title','Login')
 @section('content')
 
 <section class="login-area">
