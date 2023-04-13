@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class GerenteController extends Controller
 {
-     /**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
-    public function perfil_usuario()
+    public function login()
     {
-        return view('perfil_usuario');
+        return view('login');
+    }
+    public function cadastro()
+    {
+        return view('cadastro');
     }
 }

@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PerfilController extends Controller
 {
-     /**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function index()
+    {
+        return view('perfil');
+    }
 
     public function perfil_usuario()
     {

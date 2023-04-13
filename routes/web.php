@@ -5,6 +5,7 @@ use App\Http\Controllers\StaterkitController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,12 @@ use App\Http\Controllers\UserController;
 // locale Route
 //Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'index'])->name('categorias');
+Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'index'])->name('perfil');
+Route::get('/usuario', [App\Http\Controllers\UserController::class, 'perfil_usuario'])->name('perfil_usuario');
+Route::get('/login', [App\Http\Controllers\GerenteController::class, 'login'])->name('login');
+Route::get('/cadastro', [App\Http\Controllers\GerenteController::class, 'cadastro'])->name('cadastro');
 
