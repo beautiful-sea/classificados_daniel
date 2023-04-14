@@ -38,12 +38,12 @@
                     </ul>
                 </div>
 
-                <div class="nav-item border-0 d-lg-inline-block align-self-center"> <a href="/login" class=" btn btn-sm btn-grad text-white mb-0">Login</a> </div>
-                <!-- <p class="nav-perfil">
+                <!-- <div class="nav-item border-0 d-lg-inline-block align-self-center"> <a href="/login" class=" btn btn-sm btn-grad text-white mb-0">Login</a> </div> -->
+                <p class="nav-perfil">
                     <p class="nav-perfil-content nav-perfil-item "><a href="/usuario" style="color:black" class="perfil-nome">Jorge Jesus</a> <span class="perfil-email"><small>jorge.jesus@mail</small></span>
                     <div class="avatar-content nav-perfil-item"> <a href="/usuario" class=""><img src="images/avatar.jpg" alt="avatar"></a> </div>
 
-                </p> -->
+                </p>
             </div>
         </nav>
     </header>
