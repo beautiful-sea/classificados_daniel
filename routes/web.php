@@ -42,4 +42,9 @@ Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'index'])->
 Route::get('/usuario', [App\Http\Controllers\UserController::class, 'perfil_usuario'])->name('perfil_usuario');
 Route::get('/login', [App\Http\Controllers\GerenteController::class, 'login'])->name('login');
 Route::get('/cadastro', [App\Http\Controllers\GerenteController::class, 'cadastro'])->name('cadastro');
+Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/usuarios', [App\Http\Controllers\Admin\DashboardController::class, 'usuarios'])->name('usuarios');
+Route::get('/admcategorias', [App\Http\Controllers\Admin\DashboardController::class, 'categorias'])->name('admin_categorias');
+Route::get('/adminperfil', [App\Http\Controllers\Admin\DashboardController::class, 'admin_perfil'])->name('admin_perfil');
+Route::get('/adminconfig', [App\Http\Controllers\Admin\DashboardController::class, 'admin_config'])->name('admin_config');
 
