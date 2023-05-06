@@ -99,4 +99,21 @@ class User extends Authenticatable
         }
     }
 
+
+    public function getNameAttribute($value){
+        return explode(' ',$value)[0];
+    }
+
+//    public function getCreatedAtAttribute($value)
+//    {
+//        return date('d/m/Y H:i:s', strtotime($value));
+//    }
+
+
+
+    public function getCreatedAtForHumansAttribute()
+    {
+        //Retorna a data em diff for humans formatada para o padrão brasileiro
+        return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
 }
