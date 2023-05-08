@@ -60,7 +60,7 @@
                 <h3 class="text-white h3">Amplie sua Visibilidade e Alcance Mais Clientes</h3>
                 <p class="text-white">Crie sua Conta e Faça Parte do Nosso Marketplace. </p>
                 </div>
-                <div class="col-lg-5 text-lg-right"> <a class="btn btn-purple mb-2 mb-sm-0 mr-sm-2" href="/cadastro">CRIAR CONTA</a></div>
+                <div class="col-lg-5 text-lg-right"> <a class="btn btn-purple mb-2 mb-sm-0 mr-sm-2" href="/register">CRIAR CONTA</a></div>
             </div>
             </div>
         </div>

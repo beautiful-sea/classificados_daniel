@@ -13,6 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $categorias  = \App\Models\Categoria::with('categorias_filho')->get();
+        //categorias pai
+        $categoriasPai = $categorias->where('categoria_pai_id', null);
+        return view('index')-> with('categorias', $categorias )->with('categoriasPai', $categoriasPai);
     }
 }

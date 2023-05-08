@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group( [], function () {
+    Route::get('/users', [\App\Http\Controllers\Api\UserController::class,'index']);
+    Route::get('/categorias', [\App\Http\Controllers\Api\CategoriaController::class,'index']);
+    Route::post('/categorias', [\App\Http\Controllers\Api\CategoriaController::class,'store']);
+    Route::get('/estados', [\App\Http\Controllers\Api\EstadoController::class,'index']);
+    Route::get('/cidades/{estado_id}', [\App\Http\Controllers\Api\CidadeController::class,'index']);
+});

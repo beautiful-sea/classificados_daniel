@@ -17,31 +17,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//
-//Route::get('/', [StaterkitController::class, 'home'])->name('home');
-//Route::get('home', [StaterkitController::class, 'home'])->name('home');
-//Route::get('/logout',AuthController::class,'logout')->name('logout');
-
-// Route Components
-//Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');
-//Route::get('layouts/full', [StaterkitController::class, 'layout_full'])->name('layout-full');
-//Route::get('layouts/without-menu', [StaterkitController::class, 'without_menu'])->name('without-menu');
-//Route::get('layouts/empty', [StaterkitController::class, 'layout_empty'])->name('layout-empty');
-//Route::get('layouts/blank', [StaterkitController::class, 'layout_blank'])->name('layout-blank');
-//
-
-// locale Route
-//Route::get('lang/{locale}', [LanguageController::class, 'swap']);
-
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('cidades/get/{id}', [App\Http\Controllers\CidadeController::class, 'getCidades'])->name('cidades.get');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/perfil', [App\Http\Controllers\Anunciante\UserController::class, 'index'])->name('perfil');
-    Route::resource('anunciante', App\Http\Controllers\Admin\AnuncianteController::class)->middleware('auth');
+    Route::get('/home', [App\Http\Controllers\Anunciante\UserController::class, 'index'])->name('perfil');
+    Route::put('anunciante/{id}', [App\Http\Controllers\Anunciante\PerfilController::class,'update']) ;
+
+    //Grupo de rotas com prefixo admin, namespace admin e middleware admin
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
+        Route::get('perfil', [App\Http\Controllers\Admin\UserController::class, 'perfil'])->name('perfil');
+        Route::put('/perfil/update', [App\Http\Controllers\Admin\UserController::class, 'perfilUpdate'])->name('update');
+        Route::get('usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usuarios');
+        Route::get('categorias', [App\Http\Controllers\Admin\CategoriaController::class, 'index'])->name('categorias');
+
+    });
 });
-
-
 

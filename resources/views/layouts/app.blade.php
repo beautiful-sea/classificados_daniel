@@ -11,6 +11,8 @@
     <link href="/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
     <link href="/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="/vendors/css/forms/select/select2.min.css"  rel="stylesheet" type="text/css">
+    <link href="/vendors/css/extensions/toastr.min.css"  rel="stylesheet" type="text/css">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <!-- Logo -->
-            <p class="logo"><a class="navbar-brand dropdown-item" href="/"> <img src="images/logo-header.png"
+            <p class="logo"><a class="navbar-brand dropdown-item" href="/"> <img src="/images/logo-header.png"
                                                                                  alt="travelgo"> </a></p>
             <button class="navbar-toggler ml-auto btn-categoria" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -30,16 +32,15 @@
                                                             data-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">Categorias</a>
                         <ul class="dropdown-menu" aria-labelledby="homeMenu">
-                            <li><a class="dropdown-item" href="/categorias"><i class="fas fa-laptop"></i> Tecnologia
-                                    <span>1029</span></a></li>
-                            <li><a class="dropdown-item" href="/categorias"><i class="fas fa-truck-pickup"></i> Veículos
-                                    <span>1228</span></a></li>
-                            <li><a class="dropdown-item" href="/categorias"><i class="fas fa-home"></i> Casa
-                                    <span>178</span></a></li>
-                            <li><a class="dropdown-item" href="/categorias"><i class="fas fa-user-md"></i> Saúde &amp;
-                                    Beleza <span>7163</span></a></li>
-                            <li><a class="dropdown-item" href="/categorias"><i class="fas fa-paw"></i> Pets &amp;
-                                    Animais <span>8709</span></a></li>
+                            @foreach($categorias as $categoria)
+                            <li>
+                                <a class="dropdown-item" href="/categorias"  >
+{{--                                    <i class="fas fa-laptop"></i>--}}
+                                    {{$categoria->nome}}
+{{--                                    <span>1029</span>--}}
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
 
@@ -59,7 +60,12 @@
                             <div  >
                                 <div class="avatar-content nav-perfil-item">
                                     <a href="/perfil" class="">
-                                        <img src="images/avatar.jpg" alt="avatar">
+                                        @if(auth()->user()->photo_path)
+                                            <img src="{!! \Illuminate\Support\Facades\Storage::url('users/'.auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
+                                        @else
+
+                                            <img src="/images/avatar.webp" style="width: 100%; height: 100%;" alt="">
+                                        @endif
                                     </a>
                                 </div>
                             </div>
@@ -77,9 +83,7 @@
         </div>
     </nav>
 </header>
-<div class="content">
-
-
+<div class="content" id="app">
     @yield('content')
 
 </div>
@@ -110,24 +114,27 @@
         </div>
         <div style="clear: both"></div>
         <div class="col-xl-12">
-            <div class=" text-center paymanet-method-logo"><img src="images/master_card.png" alt="img"> <img alt="img"
-                                                                                                             src="images/visa_card.png">
-                <img alt="img" src="images/paypal.png"> <img alt="img" src="images/american_express_card.png"> <img
-                        alt="img" src="images/discover_network_card.png"></div>
+            <div class=" text-center paymanet-method-logo"><img src="/images/master_card.png" alt="img"> <img alt="img"
+                                                                                                             src="/images/visa_card.png">
+                <img alt="img" src="/images/paypal.png"> <img alt="img" src="/images/american_express_card.png"> <img
+                        alt="img" src="/images/discover_network_card.png"></div>
             <div class="copy-info text-center"> © 2023 All Rights Reserved.</div>
         </div>
     </div>
 </footer>
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/popper.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/isotope.pkgd.min.js" type="text/javascript"></script>
-<script src="js/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-<script src="js/functions.js" type="text/javascript"></script>
-<script src="js/owl.carousel.min.js" type="text/javascript"></script>
-<script src="js/slick.js" type="text/javascript"></script>
-<script src="js/swiper.min.js" type="text/javascript"></script>
-<script src="js/main.js" type="text/javascript"></script>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/popper.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/functions.js" type="text/javascript"></script>
+<script src="/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="/js/slick.js" type="text/javascript"></script>
+<script src="/js/swiper.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/app.js"></script>
+<script src="/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="/vendors/js/extensions/toastr.min.js"></script>
+@yield('scripts')
 </body>
 </html>
 

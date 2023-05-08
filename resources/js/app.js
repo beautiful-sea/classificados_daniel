@@ -4,7 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//Import axios
+import axios from 'axios';
+window.axios = axios;
 
 window.Vue = require('vue').default;
 
@@ -20,6 +22,9 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('admin-usuarios', require('./components/admin/Usuarios.vue').default);
+Vue.component('admin-categorias', require('./components/admin/Categorias.vue').default);
+Vue.component('anunciante-editar-perfil', require('./components/anunciante/EditarPerfil.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -12,10 +12,8 @@ class CreateAnunciantesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->unsignedBigInteger('subcategoria_id');
-            $table->string('nome');
-            $table->text('descricao');
-            $table->string('telefone');
-            $table->string('email');
+            $table->string('titulo')->nullable();
+            $table->text('descricao')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

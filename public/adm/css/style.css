@@ -1,0 +1,137 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+
+
+
+.card{
+	padding: 25px 0;
+}
+.top-table{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	
+	
+}
+.input-table{
+	
+	background: transparent;
+	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	margin-right: 50px;
+	height: 40px;
+	
+}
+.exibir{
+	margin: 0 20px 0 0;
+	padding: 0;
+	font-weight: bolder;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	flex-grow: 0;
+	align-items: center;
+	
+	
+	
+}
+
+.exibir p{
+	margin: 0 10px 0 50px;
+
+
+}
+.exibir select{
+	width: 70px;
+	
+	
+}
+.btn_cadastrar{
+	
+}
+.btn_cadastrar button{
+	
+	width: 120px;
+	
+}
+
+.procurar{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	flex-grow: 8;
+	align-self: center;
+	
+}
+.procurar p{
+	margin: 0;
+	font-weight: bolder;
+	
+}
+
+.procurar p input{
+	margin-left: 10px;
+}
+
+.tabela th, .tabela td{
+	text-align: center;
+}
+
+@media screen and (max-width: 680px) {
+	.top-table{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+
+	}
+	.top-table :nth-child(2) { order: 3; }
+    .top-table :nth-child(3) { order: 2; }
+	.exibir{
+		align-self: flex-end;
+		
+		
+		
+	}
+	
+	.procurar{
+		margin: 10px 0;
+		
+		
+	}
+	.procurar p{
+		
+		margin: 0;
+		content: ' ';
+	}
+	.procurar p input{
+		margin: 0;
+		
+	}
+	
+	.btn_cadastrar{
+	
+		width: 230px;
+	}
+	.btn_cadastrar button{
+		
+		width: 100%;
+		
+	} 
+
+
+
+}

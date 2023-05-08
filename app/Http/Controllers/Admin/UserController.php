@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Endereco;
+use App\Models\Estado;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -28,7 +32,7 @@ class UserController extends Controller
             ->
         paginate($request->perPage?? 10);
 
-        return view('admin.users.index',['users' => $users]);
+        return view('admins.usuarios.index',['users' => $users]);
     }
 
     /**
@@ -189,5 +193,76 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'Usuário deletado com sucesso!');
+    }
+
+    public function perfil()
+    {
+        $estados = Estado::all();
+        return view('admins.perfil', [
+            'estados' => $estados
+        ]);
+    }
+
+
+    public function perfilUpdate(Request $request){
+        //Valida os dados do endereço e do usuário
+        $request->validate([
+            'cep' => 'required',
+            'logradouro' => 'required',
+            'cidade_id' => 'required',
+            'estado_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.auth()->user()->id,
+        ],[
+            'cep.required' => 'O campo CEP é obrigatório',
+            'logradouro.required' => 'O campo endereço é obrigatório',
+            'cidade_id.required' => 'O campo cidade é obrigatório',
+            'estado_id.required' => 'O campo estado é obrigatório',
+            'name.required' => 'O campo nome é obrigatório',
+            'email.required' => 'O campo email é obrigatório',
+            'email.email' => 'O campo email deve ser um email válido',
+            'email.unique' => 'O email informado já está cadastrado',
+        ],[
+            'cep' => 'CEP',
+            'logradouro' => 'endereço',
+            'cidade_id' => 'cidade',
+            'estado_id' => 'estado',
+            'name' => 'nome',
+            'email' => 'email',
+        ]);
+        $data = $request->all();
+        $user = auth()->user();
+
+        //Se existir imagem, salva a imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            //Deleta a imagem antiga
+            if($user->photo_path){
+                Storage::delete("users/{$user->photo_path}", 'public');
+            }
+            $name = Str::kebab($request->name);
+            $user_id=  auth()->user()->id;
+            $extension = $request->image->extension();
+            $nameFile = "{$name}-{$user_id}.{$extension}";
+            $upload = $request->image->storeAs('users', $nameFile,'public');
+            $data['photo_path'] = $nameFile;
+
+            if(!$upload){
+                return redirect()->back()->with('error', 'Falha ao fazer upload da imagem!');
+            }
+        }
+        $user->update($data);
+        //Atualiza ou cria endereco
+        $endereco = Endereco::where('user_id', $user->id)->first();
+        if(!$endereco){
+            $endereco = new Endereco();
+            $endereco->user_id = $user->id;
+        }
+        $endereco->cep = $data['cep'];
+        $endereco->logradouro = $data['logradouro'];
+        $endereco->cidade_id = $data['cidade_id'];
+        $endereco->estado_id = $data['estado_id'];
+        $endereco->save();
+
+        return redirect()->route('admin.perfil')->with('success', 'Perfil atualizado com sucesso!');
     }
 }

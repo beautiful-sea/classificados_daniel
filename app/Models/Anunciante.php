@@ -13,4 +13,8 @@ class Anunciante extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class,'subcategoria_id');
+    }
 }

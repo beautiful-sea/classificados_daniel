@@ -20,7 +20,14 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="tab-vertical tab-vertical-md py-5 mr-lg-7">
           <div class="pr-md-7 mb-5">
-            <div class="author_img"><img src="images/avatar.jpg" style="width: 100%; height: 100%;" alt=""></div>
+            <div class="author_img">
+              @if(auth()->user()->photo_path)
+              <img src="{!! \Illuminate\Support\Facades\Storage::url('users/'.auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
+                @else
+
+                <img src="/images/avatar.webp" style="width: 100%; height: 100%;" alt="">
+                @endif
+            </div>
             <h3 class="author_imgtitle">{{auth()->user()->name}}</h3>
           </div>
 
@@ -28,7 +35,7 @@
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active tab-vertical__nav-link" id="v-pills-Dashboard-tab" data-toggle="pill" href="#v-pills-Dashboard" role="tab" aria-controls="v-pills-Dashboard" aria-selected="true">Perfil</a>
                 <a class="nav-link tab-vertical__nav-link" id="v-pills-Saved-tab" data-toggle="pill" href="#v-pills-Saved" role="tab" aria-controls="v-pills-Saved" aria-selected="false">Editar Perfil</a>
-                <a class="nav-link tab-vertical__nav-link" id="v-pills-Log-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-Log" aria-selected="false">Sair</a>
+                <a class="nav-link tab-vertical__nav-link"  href="/logout"  >Sair</a>
             </div>
           <!-- End Tab Nav -->
         </div>
@@ -42,7 +49,7 @@
               <div class="inner-box inner-boxdrash">
                 <div class="welcome-msg">
                   <h3 class="page-sub-header2 clearfix no-padding">Olá {{auth()->user()->name}}</h3>
-                  <span class="page-sub-header-sub small">Cadastrou {{auth()->user()->created_at_for_humans}}</span> </div>
+                  <span class="page-sub-header-sub small">Membro desde {{auth()->user()->created_at }}</span> </div>
                 <div id="accordion" class="panel-group">
                   <div class="card card-default">
                     <div class="card-header">
@@ -50,15 +57,11 @@
                     </div>
                     <div class="panel-collapse collapse show" id="collapseB1">
                       <div class="card-body">
-                        <p><span class="title-perfil">Nome: </span> <span class="value-perfil">Jorge Jesus</span></p>
-                        <p><span class="title-perfil">Profissão: </span> <span class="value-perfil">Pedreiro</span></p>
-                        <p><span class="title-perfil">Email: </span> <span class="value-perfil">jorge.jesus@mail</span></p>
-                        <p><span class="title-perfil">Endereço: </span> <span class="value-perfil">Valença RJ</span></p>
-                        <p><span class="title-perfil">Contato: </span> <span class="value-perfil">95446464421</span></p>
-                        <p><span class="title-perfil">CEP: </span> <span class="value-perfil">27600-000</span></p>
-                        <p><span class="title-perfil">Valor por Hora: </span> <span class="value-perfil">R$ 22,00</span></p>
-                        <p><span class="title-perfil">Anúncio </span><br><span class="value-perfil-desc">Sou um pedreiro dedicado e experiente, com ampla expertise em construção e reforma. Com anos de experiência na área, tenho habilidades sólidas em alvenaria, acabamento, assentamento de pisos e azulejos, construção de paredes, reboco, entre outros serviços.</span></p>
-                        <p><span class="title-perfil">Foto Ilustrativa: </span><br> <img src="images/5.jpg" alt="imagem ilustrativa"></p>
+                        <p><span class="title-perfil">Nome: </span> <span class="value-perfil">{{auth()->user()->name}}</span></p>
+                        <p><span class="title-perfil">Categoria: </span> <span class="value-perfil">{{auth()->user()->anunciante->categoria->nome}}</span></p>
+                        <p><span class="title-perfil">Email: </span> <span class="value-perfil">{{auth()->user()->email}}</span></p>
+                        <p><span class="title-perfil">Contato: </span> <span class="value-perfil">{{auth()->user()->phone}}</span></p>
+
                       </div>
                     </div>
                   </div>
@@ -133,44 +136,7 @@
                 </div>
 
                 <div class="row">
-                  <div id="form">
-                    <form method="post">
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="first-name" placeholder="Nome" type="text">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="last-name" placeholder="Sobrenome" type="text">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="website" placeholder="profissão" type="url">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="email" placeholder="Email" type="email">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="endereco" placeholder="Endereço" type="text">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="telefone" placeholder="Telefone / contato" type="text">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="codigo-postal" placeholder="Código Postal" type="text">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="valor-hora" placeholder="Valor por Hora" type="number">
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <textarea placeholder="Descreva seu anúncio" class="form-control"></textarea>
-                      </div>
-                      <div class="col-lg-12 form-group">
-                        <input class="form-control" name="foto-ilustrativa" placeholder="FOTO ILUSTRATIVA" type="file">
-                      </div>
-
-                      <div class="col-lg-12 form-group">
-                        <input value="Atualizar Perfil" class="btn btn-success regi-btn btn-md" name="atualizar" type="submit">
-                      </div>
-                    </form>
-                  </div>
+                  <anunciante-editar-perfil :anunciante="{{auth()->user()}}"></anunciante-editar-perfil>
                 </div>
               </div>
             </div>

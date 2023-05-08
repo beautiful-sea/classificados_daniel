@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'photo_path',
+        'phone'
     ];
 
     /**
@@ -33,7 +36,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $with = [ ];
+    protected $with = ['anunciante','endereco' ];
 
     /**
      * The attributes that should be cast to native types.
@@ -100,20 +103,25 @@ class User extends Authenticatable
     }
 
 
-    public function getNameAttribute($value){
-        return explode(' ',$value)[0];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return date('d/m/Y H:i:s', strtotime($value));
     }
 
-//    public function getCreatedAtAttribute($value)
-//    {
-//        return date('d/m/Y H:i:s', strtotime($value));
-//    }
-
-
+    public function getFirstNameAttribute()
+    {
+        //Retorna o primeiro nome do usuário
+        return explode(' ', $this->name)[0];
+    }
 
     public function getCreatedAtForHumansAttribute()
     {
         //Retorna a data em diff for humans formatada para o padrão brasileiro
         return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    public function endereco(){
+        return $this->hasOne(Endereco::class);
     }
 }
