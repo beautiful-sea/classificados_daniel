@@ -14,7 +14,13 @@ class EstadoController extends Controller
      */
     public function index(Request $request)
     {
-        $estados = \App\Models\Estado::paginate($request->perPage??10);
+        $estados = \App\Models\Estado::query();
+
+        if($request->only_with_anunciantes){
+            $estados->whereHas('anunciantes');
+        }
+
+        $estados = $estados->paginate($request->perPage ?? 10);
         return response()->json($estados);
     }
 

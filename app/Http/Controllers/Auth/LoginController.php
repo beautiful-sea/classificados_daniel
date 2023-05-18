@@ -47,5 +47,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    //Pagina de login
+    public function showLoginForm()
+    {
+        $categorias = \App\Models\Categoria::all();
+        return view('auth.login',[
+            'categorias'    => $categorias
+        ]);
+    }
 
 }

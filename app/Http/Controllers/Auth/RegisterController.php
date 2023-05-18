@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anunciante;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -96,8 +98,15 @@ class RegisterController extends Controller
 
         //Cria o anunciante
         $anunciante = new \App\Models\Anunciante();
+        $slug = Str::slug($user->name); //gera o slug
+        //verifica se o slug já existe no banco de dados
+        if (Anunciante::where('slug', $slug)->exists()) {
+            //se já existe, adiciona um número aleatório ao final
+            $slug .= '-' . rand(1, 9999);
+        }
         $anunciante->user_id = $user->id;
         $anunciante->subcategoria_id = $data['categoria_id'];
+        $anunciante->slug = $slug;
         $anunciante->save();
 
         //Cria o endereco

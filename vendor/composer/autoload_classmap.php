@@ -6,11 +6,14 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\RegenerateAnunciantesSlugs' => $baseDir . '/app/Console/Commands/RegenerateAnunciantesSlugs.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Admin\\AnuncianteController' => $baseDir . '/app/Http/Controllers/Admin/AnuncianteController.php',
+    'App\\Http\\Controllers\\Admin\\CategoriaController' => $baseDir . '/app/Http/Controllers/Admin/CategoriaController.php',
     'App\\Http\\Controllers\\Admin\\DashboardController' => $baseDir . '/app/Http/Controllers/Admin/DashboardController.php',
     'App\\Http\\Controllers\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/Admin/UserController.php',
+    'App\\Http\\Controllers\\AnuncianteController' => $baseDir . '/app/Http/Controllers/AnuncianteController.php',
     'App\\Http\\Controllers\\Anunciante\\PerfilController' => $baseDir . '/app/Http/Controllers/Anunciante/PerfilController.php',
     'App\\Http\\Controllers\\Anunciante\\UserController' => $baseDir . '/app/Http/Controllers/Anunciante/UserController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -37,6 +40,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Anunciante' => $baseDir . '/app/Models/Anunciante.php',
+    'App\\Models\\Categoria' => $baseDir . '/app/Models/Categoria.php',
     'App\\Models\\Cidade' => $baseDir . '/app/Models/Cidade.php',
     'App\\Models\\Endereco' => $baseDir . '/app/Models/Endereco.php',
     'App\\Models\\Estado' => $baseDir . '/app/Models/Estado.php',
@@ -160,6 +164,7 @@ return array(
     'Cron\\HoursField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
     'Cron\\MinutesField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+    'Database\\Factories\\CategoriaFactory' => $baseDir . '/database/factories/CategoriaFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\Cidades' => $baseDir . '/database/seeders/Cidades.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',

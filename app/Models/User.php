@@ -124,4 +124,5 @@ class User extends Authenticatable
     public function endereco(){
         return $this->hasOne(Endereco::class);
     }
+
 }

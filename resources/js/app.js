@@ -21,10 +21,12 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('loader', require('./components/helpers/Loader.vue').default);
 Vue.component('admin-usuarios', require('./components/admin/Usuarios.vue').default);
 Vue.component('admin-categorias', require('./components/admin/Categorias.vue').default);
 Vue.component('anunciante-editar-perfil', require('./components/anunciante/EditarPerfil.vue').default);
+Vue.component('categorias-page', require('./components/Categorias.vue').default);
+Vue.component('anunciante-page', require('./components/Anunciante.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

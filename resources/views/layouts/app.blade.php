@@ -20,8 +20,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <!-- Logo -->
-            <p class="logo"><a class="navbar-brand dropdown-item" href="/"> <img src="/images/logo-header.png"
-                                                                                 alt="travelgo"> </a></p>
+            <p class="logo"><a class="navbar-brand dropdown-item" href="/">LOGO </a></p>
             <button class="navbar-toggler ml-auto btn-categoria" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
@@ -43,8 +42,6 @@
                             @endforeach
                         </ul>
                     </li>
-
-
                 </ul>
             </div>
 
@@ -53,15 +50,15 @@
                     <div class="nav-perfil-content nav-perfil-item ">
                         <div class="d-flex justify-content-end">
                             <div >
-                                <a href="/perfil" style="color:black" class="perfil-nome">{{Auth::user()->name}}</a>
+                                <a href="/home" style="color:black" class="perfil-nome">{{Auth::user()->name}}</a>
                                 <br>
                                 <span class="perfil-email"><small>{{Auth::user()->email}}</small></span>
                             </div>
                             <div  >
                                 <div class="avatar-content nav-perfil-item">
-                                    <a href="/perfil" class="">
+                                    <a href="/home" class="">
                                         @if(auth()->user()->photo_path)
-                                            <img src="{!! \Illuminate\Support\Facades\Storage::url('users/'.auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
+                                            <img src="{!! \Illuminate\Support\Facades\Storage::url(auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
                                         @else
 
                                             <img src="/images/avatar.webp" style="width: 100%; height: 100%;" alt="">
@@ -114,11 +111,8 @@
         </div>
         <div style="clear: both"></div>
         <div class="col-xl-12">
-            <div class=" text-center paymanet-method-logo"><img src="/images/master_card.png" alt="img"> <img alt="img"
-                                                                                                             src="/images/visa_card.png">
-                <img alt="img" src="/images/paypal.png"> <img alt="img" src="/images/american_express_card.png"> <img
-                        alt="img" src="/images/discover_network_card.png"></div>
-            <div class="copy-info text-center"> © 2023 All Rights Reserved.</div>
+
+            <div class="copy-info text-center"> © 2023 Todos os direitos reservados.</div>
         </div>
     </div>
 </footer>
@@ -130,6 +124,7 @@
 <script src="/js/slick.js" type="text/javascript"></script>
 <script src="/js/swiper.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+@yield('script_start')
 <script src="/js/app.js"></script>
 <script src="/vendors/js/forms/select/select2.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

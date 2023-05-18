@@ -23,13 +23,16 @@ Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('cidades/get/{id}', [App\Http\Controllers\CidadeController::class, 'getCidades'])->name('cidades.get');
-
+Route::get('categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias');
+Route::get('/anunciante/{slug}', [App\Http\Controllers\AnuncianteController::class, 'show'])->name('anunciante.show');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\Anunciante\UserController::class, 'index'])->name('perfil');
+    Route::put('anunciante/{id}/fotos', [App\Http\Controllers\Anunciante\PerfilController::class,'updateFotos']) ;
     Route::put('anunciante/{id}', [App\Http\Controllers\Anunciante\PerfilController::class,'update']) ;
 
     //Grupo de rotas com prefixo admin, namespace admin e middleware admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::get('perfil', [App\Http\Controllers\Admin\UserController::class, 'perfil'])->name('perfil');
         Route::put('/perfil/update', [App\Http\Controllers\Admin\UserController::class, 'perfilUpdate'])->name('update');
         Route::get('usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usuarios');

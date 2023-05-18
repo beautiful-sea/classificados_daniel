@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="/adm/css/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="/adm/css/bordered-layout.css">
     <link rel="stylesheet" type="text/css" href="/adm/css/semi-dark-layout.css">
+    <link href="/vendors/css/extensions/toastr.min.css"  rel="stylesheet" type="text/css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/adm/css/horizontal-menu.css">
@@ -339,8 +340,8 @@
 <script src="/adm/js/app-menu.js"></script>
 <script src="/adm/js/app.js"></script>
 <script src="/js/app.js"></script>
-<script src="/adm/js/toastr.min.js"></script>
 <script src="/adm/js/moment.min.js"></script>
+<script src="/vendors/js/extensions/toastr.min.js"></script>
 <!-- END: Theme JS-->
 @yield('js')
 <!-- BEGIN: Page JS-->

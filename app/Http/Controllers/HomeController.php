@@ -16,6 +16,12 @@ class HomeController extends Controller
         $categorias  = \App\Models\Categoria::with('categorias_filho')->get();
         //categorias pai
         $categoriasPai = $categorias->where('categoria_pai_id', null);
-        return view('index')-> with('categorias', $categorias )->with('categoriasPai', $categoriasPai);
+        $anunciantes = \App\Models\Anunciante::query()
+            ->with('user')
+            ->with('categoria')
+            ->with('endereco.cidade')
+            ->with('endereco.estado') ->listaveis()
+            ->limit(6)->get();
+        return view('index')-> with('categorias', $categorias )->with('categoriasPai', $categoriasPai)-> with('anunciantes', $anunciantes);
     }
 }

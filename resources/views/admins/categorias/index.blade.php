@@ -29,13 +29,5 @@
     <script src="adm/js/jquery.validate.min.js"></script>
     <!-- END: Page Vendor JS-->
 
-    <!-- BEGIN: Page JS-->
-
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
-    </script>
-    <!-- END: Page JS-->
     @endsection
 @endsection

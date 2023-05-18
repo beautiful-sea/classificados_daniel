@@ -14,6 +14,8 @@ class Categoria extends Model
         'categoria_pai_id',
     ];
 
+    protected $appends = ['count_anunciantes'];
+
     public function categoria_pai()
     {
         return $this->belongsTo(Categoria::class, 'categoria_pai_id');
@@ -21,5 +23,16 @@ class Categoria extends Model
     public function categorias_filho()
     {
         return $this->hasMany(Categoria::class, 'categoria_pai_id');
+    }
+
+    public function anunciantes()
+    {
+        return $this->hasMany(Anunciante::class, 'subcategoria_id');
+    }
+
+    public function getCountAnunciantesAttribute()
+    {
+        //Quantidade de anunciantes com escopo 'scopeListaveis'
+        return $this->anunciantes()->listaveis()->count();
     }
 }

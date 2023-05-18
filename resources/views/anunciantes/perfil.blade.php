@@ -22,7 +22,7 @@
           <div class="pr-md-7 mb-5">
             <div class="author_img">
               @if(auth()->user()->photo_path)
-              <img src="{!! \Illuminate\Support\Facades\Storage::url('users/'.auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
+              <img src="{!! \Illuminate\Support\Facades\Storage::url(auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
                 @else
 
                 <img src="/images/avatar.webp" style="width: 100%; height: 100%;" alt="">
@@ -61,6 +61,13 @@
                         <p><span class="title-perfil">Categoria: </span> <span class="value-perfil">{{auth()->user()->anunciante->categoria->nome}}</span></p>
                         <p><span class="title-perfil">Email: </span> <span class="value-perfil">{{auth()->user()->email}}</span></p>
                         <p><span class="title-perfil">Contato: </span> <span class="value-perfil">{{auth()->user()->phone}}</span></p>
+                        <p><span class="title-perfil">Endereço: </span> <span class="value-perfil">{{auth()->user()->endereco->logradouro}}</span></p>
+                        <p><span class="title-perfil">Cidade: </span> <span class="value-perfil">{{auth()->user()->endereco->cidade->nome}}</span></p>
+                        <p><span class="title-perfil">Estado: </span> <span class="value-perfil">{{auth()->user()->endereco->estado->sigla}}</span></p>
+                        <p><span class="title-perfil">CEP: </span> <span class="value-perfil">{{auth()->user()->endereco->cep}}</span></p>
+                        <p><span class="title-perfil">Titulo: </span> <span class="value-perfil">{{auth()->user()->anunciante->titulo}}</span></p>
+                        <p><span class="title-perfil">Descrição: </span> <span class="value-perfil">{{auth()->user()->anunciante->descricao}}</span></p>
+
 
                       </div>
                     </div>
@@ -136,7 +143,7 @@
                 </div>
 
                 <div class="row">
-                  <anunciante-editar-perfil :anunciante="{{auth()->user()}}"></anunciante-editar-perfil>
+                  <anunciante-editar-perfil :user-id="{{auth()->user()->id}}"></anunciante-editar-perfil>
                 </div>
               </div>
             </div>
@@ -149,5 +156,13 @@
   </div>
   </div>
 </section>
+
+@endsection
+@section('script_start')
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZT9G4GtErAFIkLrBVLaNJIyUr44wRqLY&v=weekly"
+  ></script>
 
 @endsection

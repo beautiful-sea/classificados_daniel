@@ -16,11 +16,16 @@ class CategoriaController extends Controller
     {
         $categorias = \App\Models\Categoria::query();
         $categorias->with('categoria_pai');
+        $categorias->with('categorias_filho');
+
         //Search:
         if ($request->has('search')) {
             $search = $request->get('search');
             //Nome:
             $categorias->where('nome', 'like', "%{$search}%");
+        }
+        if($request->only_pai){
+            $categorias->whereNull('categoria_pai_id');
         }
         $categorias = $categorias->paginate($request->perPage ?? 10);
         return response()->json($categorias, 200);
@@ -49,6 +54,13 @@ class CategoriaController extends Controller
             'nome' => 'required|string|max:255',
             'categoria_pai_id' => 'nullable|exists:categorias,id',
         ]);
+        //Não permitir criar categorias pai com categoria pai:
+        if ($request->categoria_pai_id) {
+            $categoriaPai = \App\Models\Categoria::find($request->categoria_pai_id);
+            if ($categoriaPai->categoria_pai_id) {
+                return response()->json(['message' => 'A categoria pai selecionada já é também uma categoria filha.'], 422);
+            }
+        }
         $categoria = new \App\Models\Categoria();
         $categoria->nome = $request->nome;
         $categoria->categoria_pai_id = $request->categoria_pai_id;
@@ -83,11 +95,37 @@ class CategoriaController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validação:
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'categoria_pai_id' => 'nullable|exists:categorias,id',
+        ]);
+        $categoria = \App\Models\Categoria::find($id);
+
+        //Não permitir criar categorias pai com categoria pai:
+        if ($request->categoria_pai_id) {
+            $categoriaPai = \App\Models\Categoria::find($request->categoria_pai_id);
+            if ($categoriaPai->categoria_pai_id) {
+                return response()->json(['message' => 'A categoria pai selecionada já é também uma categoria filha e por isso não pode ser selecionada.'], 422);
+            }
+        }
+        //Se a categoria já for pai, não permitir alterar para filha:
+        if($categoria->categorias_filho->count() > 0 && $request->categoria_pai_id){
+            return response()->json(['message' => 'A categoria selecionada já possui categorias filhas e por isso não pode ser alterada para uma categoria filha.'], 422);
+        }
+        //Se a categoria já for filha, não permitir alterar para pai:
+        if($categoria->categoria_pai_id && !$request->categoria_pai_id){
+            return response()->json(['message' => 'A categoria selecionada já é uma categoria filha e por isso não pode ser alterada para uma categoria pai.'], 422);
+        }
+
+        $categoria->nome = $request->nome;
+        $categoria->categoria_pai_id = $request->categoria_pai_id;
+        $categoria->save();
+        return response()->json($categoria, 200);
     }
 
     /**
@@ -99,5 +137,12 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function anunciantes (Request $request, $categoria_id){
+        $anunciantes = \App\Models\Anunciante::with(['categoria','endereco.cidade','endereco.estado']);
+        $anunciantes->where('subcategoria_id', $categoria_id);
+        $anunciantes = $anunciantes->paginate($request->perPage ?? 10);
+        return response()->json($anunciantes, 200);
     }
 }

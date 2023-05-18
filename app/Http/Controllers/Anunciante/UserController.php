@@ -13,7 +13,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('anunciantes.perfil');
+        //Se o usuario for administrador, redirecionar para o dashboard do admin
+        if(auth()->user()->admin){
+            return redirect()->route('admin.dashboard');
+        }
+        $categorias = \App\Models\Categoria::all();
+        return view('anunciantes.perfil',[
+            'categorias' => $categorias
+        ]);
     }
 
 

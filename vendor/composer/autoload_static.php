@@ -511,11 +511,14 @@ class ComposerStaticInite5398c21964a7f5bac06b663af07fbbc
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\RegenerateAnunciantesSlugs' => __DIR__ . '/../..' . '/app/Console/Commands/RegenerateAnunciantesSlugs.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AnuncianteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AnuncianteController.php',
+        'App\\Http\\Controllers\\Admin\\CategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoriaController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
+        'App\\Http\\Controllers\\AnuncianteController' => __DIR__ . '/../..' . '/app/Http/Controllers/AnuncianteController.php',
         'App\\Http\\Controllers\\Anunciante\\PerfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/Anunciante/PerfilController.php',
         'App\\Http\\Controllers\\Anunciante\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Anunciante/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -542,6 +545,7 @@ class ComposerStaticInite5398c21964a7f5bac06b663af07fbbc
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Anunciante' => __DIR__ . '/../..' . '/app/Models/Anunciante.php',
+        'App\\Models\\Categoria' => __DIR__ . '/../..' . '/app/Models/Categoria.php',
         'App\\Models\\Cidade' => __DIR__ . '/../..' . '/app/Models/Cidade.php',
         'App\\Models\\Endereco' => __DIR__ . '/../..' . '/app/Models/Endereco.php',
         'App\\Models\\Estado' => __DIR__ . '/../..' . '/app/Models/Estado.php',
@@ -665,6 +669,7 @@ class ComposerStaticInite5398c21964a7f5bac06b663af07fbbc
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\CategoriaFactory' => __DIR__ . '/../..' . '/database/factories/CategoriaFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\Cidades' => __DIR__ . '/../..' . '/database/seeders/Cidades.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
