@@ -84,4 +84,10 @@ class CidadeController extends Controller
     {
         //
     }
+
+    public function cidadePorEstado($estado_id)
+    {
+        $cidades = Cidade::where('estado_id', $estado_id)->paginate($request->perPage??9999999999);
+        return response()->json($cidades);
+    }
 }

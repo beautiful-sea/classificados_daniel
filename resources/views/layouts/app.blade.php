@@ -104,7 +104,7 @@
                 <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9"><span class=""><a
                                 class="u-label u-label--sm u-label--purple mb-3"
                                 href="/categorias">Categorias</a></span>
-                    <h2 class="h3">Descubra uma <strong>Ampla Gama de Opções def Serviços</strong></h2>
+                    <h2 class="h3">Descubra uma <strong>Ampla Gama de Opções de Serviços</strong></h2>
                     <p>Opções de Serviços para Todos os Tipos de Necessidades</p>
                 </div>
                 <!-- End Title -->

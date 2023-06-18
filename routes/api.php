@@ -15,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 //Autenticacao
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
+Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register'])->name('register');
 
 Route::group(['middleware' => ['auth:api']], function () {
     // /me
     Route::put('/me/update', [\App\Http\Controllers\Api\AuthController::class, 'update']);
     Route::post('/me/update-photo', [\App\Http\Controllers\Api\AuthController::class, 'updatePhoto']);
     Route::get('/me', [\App\Http\Controllers\Api\AuthController::class, 'me']);
+
+    //Cidades
+    Route::get('/cidades/estado/{estado_id}', [\App\Http\Controllers\Api\CidadeController::class, 'cidadePorEstado']);
+    Route::get('/estados', [\App\Http\Controllers\Api\EstadoController::class, 'index']);
 }) ;
 
 Route::group([], function () {

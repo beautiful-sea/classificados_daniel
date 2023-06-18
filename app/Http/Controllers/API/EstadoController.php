@@ -20,7 +20,7 @@ class EstadoController extends Controller
             $estados->whereHas('anunciantes');
         }
 
-        $estados = $estados->paginate($request->perPage ?? 10);
+        $estados = $estados->paginate($request->perPage ?? 999999999);
         return response()->json($estados);
     }
 

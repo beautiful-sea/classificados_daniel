@@ -130,7 +130,7 @@ class User extends Authenticatable implements JWTSubject
     public function getPhotoPathAttribute($value)
     {
         if ($value) {
-            return 'storage/' . $value;
+            return asset('storage/' . $value);
         } else {
             return asset('images/avatar.webp');
         }

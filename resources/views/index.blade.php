@@ -14,7 +14,7 @@
                     </div>
                     <form action="/categorias" class="cflyformtheme cflyformbannersearch">
                         <fieldset>
-                            <div class="form-group cflyinputwithicon" style="width: 50%!important;"><i class="fas fa-bullhorn"></i>
+                            <div class="form-group cflyinputwithicon" ><i class="fas fa-bullhorn"></i>
                                 <input type="text" name="q" class="form-control"
                                        placeholder="O que você procura?">
                             </div>
@@ -69,7 +69,7 @@
                             <div class="card card-event info-overlay">
                                 <div class="img has-background"
                                      style="background-image: url({{$a->foto_principal_path}}); background-size:cover ">
-                                    <a href="addetail.html" class="event-pop-link"> <span class="event-badges "> <span
+                                    <a href="/anunciante/{{$a->slug}}" class="event-pop-link"> <span class="event-badges "> <span
                                                     class="badge badge-danger"> EM ALTA</span> </span>
                                         <div class="event-pop-info">
                                             <p class="publisher"><strong>{{$a->titulo}}</strong></p>
@@ -80,11 +80,11 @@
                                                 <div class="review-count"> 4.89 | 89 avaliações</div>
                                             </div>
                                         </div>
-                                    </a> <a href="addetail.html"> <img alt="340x230" class="card-img-top img-responsive"
+                                    </a> <a href="/anunciante/{{$a->slug}}"> <img alt="340x230" class="card-img-top img-responsive"
                                                                        data-holder-rendered="true"
                                                                        src="images/10x6.gif"> </a></div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="addetail.html">{{$a->titulo}}</a>
+                                    <h4 class="card-title"><a href="/anunciante/{{$a->slug}}">{{$a->titulo}}</a>
                                     </h4>
                                     <div class="card-event-info">
                                         <p class="event-location"><i class="far fa-compass"></i> <a class="location"
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="pull-left left">
-                                        <div class="">por <a href="dashboard-myads.html">{{$a->user->name}} </a></div>
+                                        <div class="">por <a href="/anunciante/{{$a->slug}}">{{$a->user->name}} </a></div>
                                     </div>
                                     <div class="pull-right right social-link"><a href="#"><i
                                                     class="fa  fa-share-alt"></i> </a> <a href="#"></a></div>
@@ -111,5 +111,5 @@
             </div>
         </div>
     </div>
- 
+
 @endsection

@@ -96,4 +96,34 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Successfully logged out']);
     }
+
+    public function register(Request $request)
+    {
+        try{
+            $data = $request->all();
+            //valida dados
+            $validator = \Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'phone' => 'required|string|max:255',
+                'subcategoria_id' => 'required|integer'
+                    ]
+            );
+            if($validator->fails()){
+                return response()->json(['error' => $validator->errors()], 400);
+            }
+            $data['role'] = 'anunciante';
+            $data['password'] = bcrypt($data['password']);
+            $user = \App\Models\User::create($data);
+            $user->anunciante()->create();
+            $user->endereco()->create();
+            //Loga o usuario e retorna o token
+            $token = auth('api')->login($user);
+            return $this->respondWithToken($token);
+        }catch(\Exception $e){
+
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

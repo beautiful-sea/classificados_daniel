@@ -260,9 +260,9 @@ Header 1 Area CSS
 	flex-grow: 1;
 }
 
-.logo > a{
-	width: 230px;
-}
+/*.logo > a{*/
+/*	width: 230px;*/
+/*}*/
 
 .nav-perfil-content{
 	display: flex;
