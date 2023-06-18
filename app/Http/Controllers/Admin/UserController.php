@@ -30,6 +30,8 @@ class UserController extends Controller
                 $query->where('role', $request->role);
             })
             ->
+                //Somente usuarios que sao anunciantes
+                whereHas('anunciante')->
         paginate($request->perPage?? 10);
 
         return view('admins.usuarios.index',['users' => $users]);
@@ -106,9 +108,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, User $usuario)
     {
-        //
+        return view('admins.usuarios.show', ['user' => $usuario]);
     }
 
     /**

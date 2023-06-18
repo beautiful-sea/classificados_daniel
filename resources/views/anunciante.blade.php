@@ -60,7 +60,7 @@
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZT9G4GtErAFIkLrBVLaNJIyUr44wRqLY&v=weekly"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiWXsgSJXp6TyYa_nl7LJCFSK0Oyp0yd8&v=weekly"
   ></script>
 
 @endsection

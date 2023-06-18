@@ -3,11 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\Anunciante;
+use App\Models\Categoria;
 use App\Models\Cidade;
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserFactory extends Factory
@@ -53,9 +56,18 @@ class UserFactory extends Factory
                 $foto_path = UploadedFile::fake()->image($name, 200, 200)->storeAs('users', $name, 'public');
                 $user->photo_path = $foto_path;
                 $user->save();
+                $subcategoria_id = rand(1, 23);
+                $subcategoria = Categoria::find($subcategoria_id);
+                $theme = $subcategoria->nome; //pega uma categoria aleatoria
+                $client = new Client();
+                $response = $client->get("https://source.unsplash.com/240x160/?{$theme}",['verify' => false,]);
+                $imageData = $response->getBody()->getContents();
+                $fileName = 'foto_principal_' . $user->id . '.jpg';
+                Storage::disk('public')->put('anunciantes/' . $fileName, $imageData);
+                $foto_principal = 'anunciantes/' . $fileName;
 
                 //Foto principal é uma imagem 240x160 com o nome  'anunciantes/foto_principal_' . $id.$extension  relacionada a categoria da profissao do anunciante
-                $foto_principal =  UploadedFile::fake()->image('foto_principal', 240, 160)->storeAs('anunciantes', 'foto_principal_' . $user->id . '.jpg', 'public');
+//                $foto_principal =  UploadedFile::fake()->image('foto_principal', 240, 160)->storeAs('anunciantes', 'foto_principal_' . $user->id . '.jpg', 'public');
 
                 $slug = Str::slug($user->name); //gera o slug
                 //verifica se o slug já existe no banco de dados
@@ -64,7 +76,7 @@ class UserFactory extends Factory
                     $slug .= '-' . rand(1, 9999);
                 }
                 $user->anunciante()->create([
-                    'subcategoria_id' => rand(1, 10),
+                    'subcategoria_id' => $subcategoria->id,
                     'titulo' => $this->faker->sentence(),
                     'descricao' => $this->faker->text(),
                     'valor_hora' => rand(50, 200),

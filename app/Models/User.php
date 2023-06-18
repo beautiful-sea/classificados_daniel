@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes ;
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +48,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['is_admin', 'is_anunciante', 'is_visitante', 'badge_user_type', 'first_name', 'created_at_for_humans', 'phone_formatted'];
 
     public function admin()
     {
@@ -104,10 +106,7 @@ class User extends Authenticatable
 
 
 
-    public function getCreatedAtAttribute($value)
-    {
-        return date('d/m/Y H:i:s', strtotime($value));
-    }
+
 
     public function getFirstNameAttribute()
     {
@@ -125,4 +124,35 @@ class User extends Authenticatable
         return $this->hasOne(Endereco::class);
     }
 
+    //Foto de perfil
+    public function getPhotoPathAttribute($value)
+    {
+        if ($value) {
+            return asset('storage/' . $value);
+        } else {
+            return asset('images/avatar.webp');
+        }
+    }
+
+
+    //Telefone formato (00) 00000-0000
+    public function getPhoneFormattedAttribute()
+    {
+        $value = $this->phone;
+        if ($value) {
+            return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 5) . '-' . substr($value, 7, 4);
+        } else {
+            return null;
+        }
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

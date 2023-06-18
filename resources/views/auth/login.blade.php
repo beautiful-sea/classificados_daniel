@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['without_extra_content' => true])
 @section('title','Login')
 @section('content')
 
@@ -22,6 +22,17 @@
                                         <label>Senha</label>
                                         <input type="password" name="password" placeholder="Sua senha aqui">
                                     </div>
+                                    <div class="col-12">
+                                        @if($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach($errors->all() as $error)
+                                                        <li>{{$error}}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
                                     <div class="col-md-12 d-flex justify-content-between">
                                         <div class="chqbox">
                                             <input type="checkbox" name="rememberme" id="rmme">
@@ -39,15 +50,7 @@
                         </div>
                     </div>
 
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
 
                 </div>
             </div>

@@ -42,6 +42,7 @@
                                                 <label>Categoria pai: </label>
                                                 <div class="mb-1">
                                                     <select class="select2 form-control" v-model="newCategoria.categoria_pai_id">
+                                                        <option :value="null" >Nenhuma (Categoria Principal)</option>
                                                         <option :value="categoria.id" v-for="categoria in selectCategoriasPai">{{ categoria.nome }}</option>
                                                     </select>
                                                 </div>
@@ -69,7 +70,7 @@
                                                 <label>Categoria pai: </label>
                                                 <div class="mb-1">
                                                     <select class="select2 form-control" v-model="editandoCategoria.categoria_pai_id">
-                                                        <option value=""></option>
+                                                        <option :value="null" >Nenhuma (Categoria Principal)</option>
                                                         <option :value="categoria.id" v-for="categoria in selectCategoriasPai">{{ categoria.nome }}</option>
                                                     </select>
                                                 </div>

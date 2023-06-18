@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['without_extra_content'=>true])
 @section('title','Categorias')
 @section('content')
 <div class="gradient-overlay-half-primary-v1 bg-img-hero innerCategoryList" style="background-image: url(images/img15.jpg);">
@@ -12,20 +12,7 @@
               <input value="{{request()->q??''}}" type="text" name="q" class="form-control"
                      placeholder="O que você procura?">
             </div>
-            {{--                            <div class="form-group cflyinputwithicon"> <i class="far fa-paper-plane"></i> <a class="cflybtnsharelocation fa fa-crosshairs" href="javascript:void(0);"></a>--}}
-            {{--                            <input type="text" name="yourlocation" class="form-control" placeholder="Localização">--}}
-            {{--                            </div>--}}
-{{--            <div class="form-group cflyinputwithicon " >--}}
-{{--              <i class="fab fa-staylinked"></i>--}}
-{{--              <div class="cflyselect ">--}}
-{{--                <select name="categoria">--}}
-{{--                  <option value="none">Categoria</option>--}}
-{{--                  @foreach ($categorias as $categoria)--}}
-{{--                    <option value="{{$categoria->id}}">{{$categoria->nome}}</option>--}}
-{{--                  @endforeach--}}
-{{--                </select>--}}
-{{--              </div>--}}
-{{--            </div>--}}
+
             <button class="cflybtn" type="submit">Buscar</button>
           </fieldset>
         </form>

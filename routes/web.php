@@ -24,6 +24,7 @@ Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('cidades/get/{id}', [App\Http\Controllers\CidadeController::class, 'getCidades'])->name('cidades.get');
 Route::get('categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias');
+Route::get('avaliacao/{slug}', [App\Http\Controllers\AvaliacaoController::class, 'index'])->name('avaliacao');
 Route::get('/anunciante/{slug}', [App\Http\Controllers\AnuncianteController::class, 'show'])->name('anunciante.show');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\Anunciante\UserController::class, 'index'])->name('perfil');
@@ -35,9 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::get('perfil', [App\Http\Controllers\Admin\UserController::class, 'perfil'])->name('perfil');
         Route::put('/perfil/update', [App\Http\Controllers\Admin\UserController::class, 'perfilUpdate'])->name('update');
+        Route::get('usuarios/{usuario}', [App\Http\Controllers\Admin\UserController::class, 'show']);
         Route::get('usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usuarios');
         Route::get('categorias', [App\Http\Controllers\Admin\CategoriaController::class, 'index'])->name('categorias');
-
+        Route::get('avaliacoes', [App\Http\Controllers\Admin\AvaliacaoController::class, 'index'])->name('avaliacoes');
     });
 });
 

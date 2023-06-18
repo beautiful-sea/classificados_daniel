@@ -70,4 +70,8 @@ class Anunciante extends Model
         return 'R$ '.number_format($this->valor_hora??0, 2, ',', '.');
     }
 
+    //Avaliações
+    public function avaliacoes(){
+        return $this->hasMany(Avaliacao::class, 'anunciante_id');
+    }
 }

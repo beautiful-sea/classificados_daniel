@@ -33,8 +33,9 @@
                                     <p><i class="fas fa-user"></i> {{ anunciante.user.name }}</p>
                                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> Localização: {{ anunciante.endereco.cidade.nome }} </p>
                                 </div>
-                                <div class="seller_message"><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-block"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contato </a>
-
+                                <div class="seller_message">
+                                    <button v-if="!showContato" @click="salvarCliqueContato()" class="btn btn-success btn-block"><i class="fa fa-envelope-o" aria-hidden="true"></i> Ver contato </button>
+                                    <button v-else  class="btn btn-success btn-block"><i class="far fa-whatsapp" aria-hidden="true"></i> {{ anunciante.user.phone }}</button>
                                 </div>
                             </div>
 
@@ -60,16 +61,31 @@ export default {
                     estado: {}
                 },
                 categoria: {},
-                user: {}
-
-            }
+                user: {},
+            },
+            showContato: false
         }
     },
     methods:{
-        getAnunciante(){
+        salvarVisita(){
+            let self =  this;
+            axios.post('/api/anunciante/'+this.anunciante.id+'/visita').then(response => {
+                console.log(response.data);
+            });
+        },
+        salvarCliqueContato(){
+            let self =  this;
+            axios.post('/api/anunciante/'+this.anunciante.id+'/clique_contato').then(response => {
+                self.showContato = true;
+            });
+        },
+        getAnunciante(salvar_visita = false){
             axios.get('/api/anunciante/'+this.slug).then(response => {
                 this.anunciante = response.data;
                 this.initMap();
+                if(salvar_visita){
+                    this.salvarVisita();
+                }
             });
         },
         initMap() {
@@ -126,8 +142,7 @@ export default {
 
     },
     mounted(){
-        this.getAnunciante();
-
+        this.getAnunciante(true);
     }
 }
 </script>

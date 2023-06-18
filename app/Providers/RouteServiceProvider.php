@@ -51,10 +51,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
 
-//            Route::middleware('anunciante')
-//                ->namespace($this->namespace)
-//                ->group(base_path('routes/anunciante.php'));
-
         });
     }
 
@@ -69,4 +65,5 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
+
 }

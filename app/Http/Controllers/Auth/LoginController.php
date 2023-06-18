@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -56,4 +57,19 @@ class LoginController extends Controller
         ]);
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ],
+        [
+            'required' => 'O campo :attribute é obrigatório',
+            'string' => 'O campo :attribute deve ser uma string',
+        ],
+        [
+            'email' => 'E-mail',
+            'password' => 'Senha',
+        ]);
+    }
 }

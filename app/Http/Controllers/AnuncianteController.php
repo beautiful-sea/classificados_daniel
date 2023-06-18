@@ -14,4 +14,9 @@ class AnuncianteController extends Controller
             'categorias' => $categorias,
         ]);
     }
+
+    public function avaliacoes(Request $request, $id){
+        $avaliacoes = \App\Models\Avaliacao::where('anunciante_id', $id)->get();
+        return response()->json($avaliacoes);
+    }
 }

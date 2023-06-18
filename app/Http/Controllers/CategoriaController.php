@@ -13,10 +13,6 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = \App\Models\Categoria::all();
-
-        return view('categorias',[
-            'categorias'    => $categorias
-        ]);
+        return view('categorias');
     }
 }

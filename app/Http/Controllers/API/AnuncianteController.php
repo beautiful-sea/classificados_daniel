@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AnuncianteCollection;
+use App\Http\Resources\AnunciantesResource;
 use Illuminate\Http\Request;
 
 class AnuncianteController extends Controller
@@ -45,7 +47,7 @@ class AnuncianteController extends Controller
         //Somente anunciantes com escopo 'scopeListaveis'
         $anunciantes->listaveis();
 
-        $anunciantes = $anunciantes->paginate($request->perPage ?? 10);
+        $anunciantes = new AnunciantesResource($anunciantes->paginate($request->perPage ?? 10));
         return response()->json($anunciantes, 200);
     }
 
@@ -72,5 +74,37 @@ class AnuncianteController extends Controller
             ->first();
 
         return response()->json($anunciante, 200);
+    }
+
+    public function cliqueContato(Request $request, $id)
+    {
+       $clique = \App\Models\CliquesContatoAnunciante::create([
+            'anunciante_id' => $id,
+            'ip' => $request->ip(),
+        ]);
+
+        return response()->json(['message' => 'Clique contato registrado com sucesso!']);
+    }
+
+    public function visita(Request $request, $anunciante_id)
+    {
+       $visita = \App\Models\VisitasPaginaAnunciante::create([
+            'anunciante_id' => $anunciante_id,
+            'ip' => $request->ip(),
+        ]);
+
+        return response()->json(['message' => 'Visita registrada com sucesso!']);
+    }
+
+    public function favoritos(Request $request){
+        $ids = $request->ids;
+        $ids = explode(',', $ids);
+        $anunciantes = \App\Models\Anunciante::whereIn('id', $ids)
+            ->with('user')
+            ->with('categoria')
+            ->with('endereco.cidade')
+            ->with('endereco.estado') ;
+        $anunciantes = new AnunciantesResource($anunciantes->paginate($request->perPage ?? 10));
+        return response()->json($anunciantes, 200);
     }
 }

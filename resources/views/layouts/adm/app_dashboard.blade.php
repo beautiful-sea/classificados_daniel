@@ -68,110 +68,9 @@
         </div>
         <ul class="nav navbar-nav align-items-center ms-auto">
 
-            <li class="nav-item d-none d-lg-block">
-                <a class="nav-link nav-link-style"><i class="ficon" data-feather="sun"></i></a>
-            </li>
 
-
-            <li class="nav-item dropdown dropdown-notification me-25">
-                <a class="nav-link" href="#" data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span
-                            class="badge rounded-pill bg-danger badge-up">3</span></a>
-                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
-                    <li class="dropdown-menu-header">
-                        <div class="dropdown-header d-flex">
-                            <h4 class="notification-title mb-0 me-auto">Notificações</h4>
-                            <div class="badge rounded-pill badge-light-primary">6 Novas</div>
-                        </div>
-                    </li>
-                    <li class="scrollable-container media-list">
-                        <a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar"><img src="/images/avatar.jpg" alt="avatar" width="32"
-                                                             height="32"></div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">Parabens Sam 🎉</span>Ganhador!</p>
-                                    <small class="notification-text"> Ganhou tag de vendedor do mês.</small>
-                                </div>
-                            </div>
-                        </a><a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar"><img src="/images/avatar2.jpg" alt="avatar" width="32"
-                                                             height="32"></div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">Nova Mensagem </span>&nbsp;recebida
-                                    </p><small class="notification-text"> Você tem 3 mensagens não lidas</small>
-                                </div>
-                            </div>
-                        </a><a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar bg-light-danger">
-                                        <div class="avatar-content">MD</div>
-                                    </div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">Mensagem 👋</span>&nbsp;</p><small
-                                            class="notification-text"> MD Inc</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="list-item d-flex align-items-center">
-                            <h6 class="fw-bolder me-auto mb-0">Notificação do Sistema</h6>
-                            <div class="form-check form-check-primary form-switch">
-                                <input class="form-check-input" id="systemNotification" type="checkbox" checked="">
-                                <label class="form-check-label" for="systemNotification"></label>
-                            </div>
-                        </div>
-                        <a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar bg-light-danger">
-                                        <div class="avatar-content"><i class="avatar-icon" data-feather="x"></i></div>
-                                    </div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">Server down</span>&nbsp;registered
-                                    </p><small class="notification-text"> USA Server is down due to hight CPU
-                                        usage</small>
-                                </div>
-                            </div>
-                        </a><a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar bg-light-success">
-                                        <div class="avatar-content"><i class="avatar-icon" data-feather="check"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">Sales report</span>&nbsp;generated
-                                    </p><small class="notification-text"> Last month sales report generated</small>
-                                </div>
-                            </div>
-                        </a><a class="d-flex" href="#">
-                            <div class="list-item d-flex align-items-start">
-                                <div class="me-1">
-                                    <div class="avatar bg-light-warning">
-                                        <div class="avatar-content"><i class="avatar-icon"
-                                                                       data-feather="alert-triangle"></i></div>
-                                    </div>
-                                </div>
-                                <div class="list-item-body flex-grow-1">
-                                    <p class="media-heading"><span class="fw-bolder">High memory</span>&nbsp;usage</p>
-                                    <small class="notification-text"> BLR Server using high memory</small>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="dropdown-menu-footer"><a class="btn btn-primary w-100" href="#">Marcar todas como
-                            lida</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
+            <li class="nav-item dropdown dropdown-user ">
+                <a class="nav-link dropdown-toggle dropdown-user-link"
                                                            id="dropdown-user" href="#" data-bs-toggle="dropdown"
                                                            aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
@@ -257,19 +156,24 @@
         <div class="navbar-container main-menu-content" data-menu="menu-container">
             <!-- include ../../../includes/mixins-->
             <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item">
-                    <a class=" nav-link d-flex align-items-center" href="/admin">
-                        <i data-feather="activity"></i><span data-i18n="Dashboards">Dashboard</span>
+                <li class="nav-item  {{request()->path() == 'admin'?'active':''}}">
+                    <a class="  nav-link d-flex align-items-center" href="/admin">
+                        <i data-feather="activity"></i><span data-i18n="Dashboards">Dashboard </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class=" nav-link d-flex align-items-center" href="/admin/usuarios">
-                        <i data-feather="users"></i><span data-i18n="Dashboards">Usuários</span>
+                <li class="nav-item  {{request()->path() == 'admin/usuarios'?'active':''}} ">
+                    <a class="nav-link d-flex align-items-center" href="/admin/usuarios">
+                        <i data-feather="users"></i><span data-i18n="Dashboards">Usuários </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item  {{request()->path() == 'admin/categorias'?'active':''}} ">
                     <a class=" nav-link d-flex align-items-center" href="/admin/categorias">
                         <i data-feather="layers"></i><span data-i18n="Dashboards">Categorias</span>
+                    </a>
+                </li>
+                <li class="nav-item  {{request()->path() == 'admin/avaliacoes'?'active':''}} ">
+                    <a class=" nav-link d-flex align-items-center" href="/admin/avaliacoes">
+                        <i data-feather="star"></i><span data-i18n="Dashboards">Avaliações</span>
                     </a>
                 </li>
 

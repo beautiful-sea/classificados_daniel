@@ -81,6 +81,7 @@
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Tipo de usuário</th>
+                            <th></th>
                         </tr>
 
                         </thead>
@@ -89,6 +90,16 @@
                             <td style="color: black;">{{ user.name }}</td>
                             <td style="color: black;">{{ user.email }}</td>
                             <td style="color: black;">{{ user.role }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a type="button" class="btn btn-primary btn-table"  :href="'/admin/usuarios/'+user.id">
+                                        Ver
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-table" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                        Excluir
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
 
                         </tbody>
