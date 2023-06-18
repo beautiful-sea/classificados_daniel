@@ -22,7 +22,7 @@
           <div class="pr-md-7 mb-5">
             <div class="author_img">
               @if(auth()->user()->photo_path)
-              <img src="{!! \Illuminate\Support\Facades\Storage::url(auth()->user()->photo_path) !!}" style="width: 100%; height: 100%;" alt="">
+              <img src="{!! auth()->user()->photo_path !!}" style="width: 100%; height: 100%;" alt="">
                 @else
 
                 <img src="/images/avatar.webp" style="width: 100%; height: 100%;" alt="">
