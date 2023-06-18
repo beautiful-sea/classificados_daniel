@@ -60,6 +60,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->admin()->exists();
     }
 
+
+
     public function anunciante()
     {
         return $this->hasOne(Anunciante::class);
@@ -128,7 +130,7 @@ class User extends Authenticatable implements JWTSubject
     public function getPhotoPathAttribute($value)
     {
         if ($value) {
-            return asset('storage/' . $value);
+            return 'storage/' . $value;
         } else {
             return asset('images/avatar.webp');
         }
