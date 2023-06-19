@@ -132,13 +132,13 @@
                             </div>
                         </div>
                         <div class="inner-box has-aff relative"><a class="dummy-aff-img" href="categories.html"><img
-                                        src="images/aff2.jpg" class="img-responsive" alt=" aff"> </a></div>
+                                        src="/images/aff2.jpg" class="img-responsive" alt=" aff"> </a></div>
                     </div>
                     <div class="col-md-3 page-sidebar col-thin-left">
                         <aside>
                             <div class="inner-box no-padding">
                                 <div class="inner-box-content"><a href="#"><img class="img-responsive"
-                                                                                src="images/app.jpg"
+                                                                                src="/images/app.jpg"
                                                                                 alt="tv"></a></div>
                             </div>
                             <div class="inner-box">
@@ -151,7 +151,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="inner-box no-padding"><img class="img-responsive" src="images/add2.jpg" alt="">
+                            <div class="inner-box no-padding"><img class="img-responsive" src="/images/aff2.jpg" alt="">
                             </div>
                         </aside>
                     </div>
