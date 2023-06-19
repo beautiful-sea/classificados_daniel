@@ -56,7 +56,7 @@
             </div>
         </section>
         <div class="gradient-overlay-half-primary-v1">
-        <div class="bg-img-hero" style="background-image: url(images/bg2.png);">
+        <div class="bg-img-hero" style="background-image: url(/images/bg2.png);">
             <div class="container">
             <div class="row align-items-lg-center text-lg-left space-2">
                 <div class="col-lg-7">

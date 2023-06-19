@@ -193,7 +193,7 @@ export default {
             }
             return descricao;
         },
-        getCategorias(onlyPai = true) {
+        getCategorias(onlyPai = true, select_id_before = null) {
             let self = this;
             this.loading = true;
             let url = '/api/categorias';
@@ -204,6 +204,10 @@ export default {
 
             axios.get(url).then((response) => {
                 this.categorias = response.data;
+                if(select_id_before){
+                    let categoria = this.categorias.data.find(c => c.id == select_id_before);
+                    self.setCategoria(categoria);
+                }
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
@@ -286,11 +290,17 @@ export default {
             this.search = q;
         }
 
-        this.getCategorias();
-        this.getAnunciantes();
+        //Se existir o parametro c na url, busca a categoria e seta no componente
+        let c = url.searchParams.get("c");
+        if (c) {
+            this.getCategorias(false, c);
+            //Busca os anunciantes daquela categoria
+            this.getAnunciantes(this.categoria);
+        }else{
+            this.getCategorias();
+            this.getAnunciantes();
+        }
         this.getEstados();
-
-
     }
 }
 </script>

@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Autenticacao
-Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
-Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register'])->name('register');
+Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 
 Route::group(['middleware' => ['auth:api']], function () {
     // /me
@@ -37,8 +37,9 @@ Route::group([], function () {
     Route::post('/categorias', [\App\Http\Controllers\Api\CategoriaController::class, 'store']);
     Route::get('/estados', [\App\Http\Controllers\Api\EstadoController::class, 'index']);
     Route::get('/cidades/{estado_id}', [\App\Http\Controllers\Api\CidadeController::class, 'index']);
-    Route::get('/anunciante/user/{user_id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'anuncianteByUser']);
     Route::get('/anunciante/{slug}', [\App\Http\Controllers\Api\AnuncianteController::class, 'anuncianteBySlug']);
+    Route::get('/anunciante/user/{user_id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'anuncianteByUser']);
+
 
     //Cliques no botao de contato
     Route::post('/anunciante/{anunciante_id}/clique_contato', [\App\Http\Controllers\Api\AnuncianteController::class, 'cliqueContato']);

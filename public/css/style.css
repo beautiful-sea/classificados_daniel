@@ -217,10 +217,10 @@ Header 1 Area CSS
 
 }
 
-@media screen and (max-width: 530px) {
-	.nav-perfil-content{
-		position: absolute;
-		left: -300px;
+/*nav-perfil no celular*/
+@media (max-width: 992px) {
+	.nav-perfil-info{
+		display: none;
 	}
 }
 .navbar {
@@ -7737,6 +7737,11 @@ blog-single-section
 	border-radius: 6px;
 	border-top: 3px solid #21c87a;
 	padding: 45px 50px;
+}
+@media (max-width: 767px) {
+	.login-area .login-box {
+		width: 100%;
+	}
 }
 .login-area .login-box .login-top {
 	margin-bottom: 30px;

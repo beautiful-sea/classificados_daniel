@@ -2,7 +2,7 @@
 @section('title','Categorias')
 @section('content')
 
-<div class="gradient-overlay-half-primary-v1 bg-img-hero innerCategoryList" style="background-image: url(images/img15.jpg);">
+<div class="gradient-overlay-half-primary-v1 bg-img-hero innerCategoryList" style="background-image: url(/images/app.jpg);">
   <div class="container space-2 space-4-top--lg space-3-bottom--lg">
     <div class="row align-items-lg-center">
       <div class="col-lg-12 mb-lg-0">
@@ -40,14 +40,14 @@
   <anunciante-page slug="{!! $slug !!}"></anunciante-page>
 </section>
 <div class="gradient-overlay-half-primary-v1">
-  <div class="bg-img-hero" style="background-image: url(images/bg2.png);">
+  <div class="bg-img-hero" style="background-image: url(/images/bg2.png);">
     <div class="container">
       <div class="row align-items-lg-center text-lg-left space-2">
         <div class="col-lg-7">
           <h3 class="text-white h3">Amplie sua Visibilidade e Alcance Mais Clientes</h3>
           <p class="text-white">Crie sua Conta e Faça Parte do Nosso Marketplace</p>
         </div>
-        <div class="col-lg-5 text-lg-right"> <a class="btn btn-purple mb-2 mb-sm-0 mr-sm-2" href="#">LOGIN</a> <a class="btn btn-light mb-2 mb-sm-0" href="#">Criar Conta</a> </div>
+        <div class="col-lg-5 text-lg-right"> <a class="btn btn-purple mb-2 mb-sm-0 mr-sm-2" href="#">LOGIN</a> <a class="btn btn-light mb-2 mb-sm-0" href="/register">Criar Conta</a> </div>
       </div>
     </div>
   </div>

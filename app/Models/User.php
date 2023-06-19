@@ -37,7 +37,7 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    protected $with = ['anunciante','endereco' ];
+    protected $with = [ 'endereco' ];
 
     /**
      * The attributes that should be cast to native types.

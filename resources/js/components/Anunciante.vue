@@ -79,13 +79,15 @@ export default {
                 self.showContato = true;
             });
         },
-        getAnunciante(salvar_visita = false){
-            axios.get('/api/anunciante/'+this.slug).then(response => {
+        getAnunciante: function (salvar_visita = false) {
+            axios.get('/api/anunciante/' + this.slug).then(response => {
                 this.anunciante = response.data;
                 this.initMap();
-                if(salvar_visita){
+                if (salvar_visita) {
                     this.salvarVisita();
                 }
+            }).catch(error => {
+                console.log(error);
             });
         },
         initMap() {
@@ -139,10 +141,10 @@ export default {
         }
     },
     created(){
-
+        this.getAnunciante(true);
     },
     mounted(){
-        this.getAnunciante(true);
+
     }
 }
 </script>

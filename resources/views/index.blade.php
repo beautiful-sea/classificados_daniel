@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Hero Section -->
-    <div class="gradient-overlay-half-primary-v1 bg-img-hero" style="background-image: url(images/img15.jpg);">
+    <div class="gradient-overlay-half-primary-v1 bg-img-hero" style="background-image: url(/images/app.jpg);">
         <div class="container space-2 space-4-top--lg space-3-bottom--lg">
             <div class="row align-items-lg-center">
                 <div class="col-lg-12 mb-lg-0">

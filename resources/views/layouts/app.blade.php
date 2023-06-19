@@ -60,15 +60,15 @@
             </div>
 
             @if(Auth::check())
-                <div class="nav-perfil">
+                <div class="nav-perfil d-lg-inline-block">
                     <div class="nav-perfil-content nav-perfil-item ">
                         <div class="d-flex justify-content-end">
-                            <div>
+                            <div class="nav-perfil-info">
                                 <a href="/home" style="color:black" class="perfil-nome">{{Auth::user()->name}}</a>
                                 <br>
                                 <span class="perfil-email"><small>{{Auth::user()->email}}</small></span>
                             </div>
-                            <div>
+                            <div class="nav-perfil-photo">
                                 <div class="avatar-content nav-perfil-item">
                                     <a href="/home" class="">
                                         @if(auth()->user()->photo_path)
@@ -115,12 +115,12 @@
                                 @foreach($categoriasPai as $categoria)
                                     <div class="col-md-4 col-sm-4 ">
                                         <div class="cat-list">
-                                            <h3 class="cat-title"><a href="/categorias"> {{$categoria->nome}}
+                                            <h3 class="cat-title"><a href="/categorias?c={{$categoria->id}}"> {{$categoria->nome}}
                                                     {{--                                            <span class="count">277,959</span>--}}
                                                 </a></h3>
                                             <ul class="cat-collapse cat-id-1 collapse show" style="">
                                                 @foreach($categoria->categorias_filho as $categoriaFilho)
-                                                    <li><a href="/categorias">{{$categoriaFilho->nome}}</a></li>
+                                                    <li><a href="/categorias?c={{$categoriaFilho->id}}">{{$categoriaFilho->nome}}</a></li>
                                                 @endforeach
 
                                             </ul>
@@ -160,7 +160,7 @@
         </div>
 
         <div class="gradient-overlay-half-primary-v1">
-            <div class="bg-img-hero" style="background-image: url(images/bg2.png);">
+            <div class="bg-img-hero" style="background-image: url(/images/bg2.png);">
                 <div class="container">
                     <div class="row align-items-lg-center text-lg-left space-2">
                         <div class="col-lg-7">
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-lg-5 text-lg-right"><a class="btn btn-purple mb-2 mb-sm-0 mr-sm-2"
                                                                href="/login">LOGIN</a>
-                            <a class="btn btn-light mb-2 mb-sm-0" href="/cadastro">Criar Conta</a></div>
+                            <a class="btn btn-light mb-2 mb-sm-0" href="/register">Criar Conta</a></div>
                     </div>
                 </div>
             </div>
