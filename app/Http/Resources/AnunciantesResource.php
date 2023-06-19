@@ -33,7 +33,7 @@ class AnunciantesResource extends ResourceCollection
                         'id' => $item->user->id,
                         'name' => $item->user->name,
                         'email' => $item->user->email,
-                        'photo_path' => $item->user->photo_path?asset('storage/' . $item->user->photo_path):asset('images/avatar.webp'),
+                        'photo_path' => $item->user->photo_path,
                         'phone' => $item->user->phone,
                         'role' => $item->user->role,
                         ],

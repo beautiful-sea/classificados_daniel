@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="list-author-content-area">
                                     <div class="listng-author-img"><a :href="'/anunciante/'+a.slug"><img class="pacz-user-avatar"
-                                                                                          :src="a.foto_perfil"
+                                                                                          :src="a.user.photo_path"
                                                                                           alt="author"></a>
                                         <!--                                        <span class="author-in-active"></span>-->
                                     </div>

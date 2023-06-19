@@ -44,11 +44,7 @@ class Anunciante extends Model
 
     //Retorna a foto do perfil com caminho completo ou a foto padrao caso nao tenha foto
     public function getFotoPerfilAttribute(){
-        if($this->foto){
-            return asset('storage/'.$this->foto);
-        }else{
-            return asset('images/avatar.webp');
-        }
+         return $this->user->photo_path;
     }
 
     //Retorna a foto principal com caminho completo ou a foto padrao caso nao tenha foto
