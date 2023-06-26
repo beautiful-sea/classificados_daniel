@@ -32,7 +32,7 @@
 {{--                                    </select>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
-                            <button class="cflybtn" type="button">Buscar</button>
+                            <button class="cflybtn" type="submit">Buscar</button>
                         </fieldset>
                     </form>
 
