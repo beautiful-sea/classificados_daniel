@@ -47,7 +47,7 @@
                             Categorias
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="homeMenu">
-                            @foreach($categorias as $categoria)
+                            @foreach($categoriasPai as $categoria)
                                 <li  >
                                     <a class="dropdown-item" href="/categorias?c={{$categoria->id}}">
                                         {{--                                    <i class="fas fa-laptop"></i>--}}
