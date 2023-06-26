@@ -1,5 +1,5 @@
 @php
-    $categorias  = \App\Models\Categoria::with('categorias_filho')->get();
+    $categorias  = \App\Models\Categoria::whereHas('anunciantes')->with('categorias_filho')->get();
        //categorias pai
        $categoriasPai = $categorias->where('categoria_pai_id', null);
        $anunciantes = \App\Models\Anunciante::query()
@@ -41,13 +41,15 @@
             <div class="collapse navbar-collapse nav-categorias" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <!-- Menu item 1 Demos-->
-                    <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" id="demosMenu"
-                                                            data-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">Categorias</a>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="demosMenu" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                            Categorias
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="homeMenu">
                             @foreach($categorias as $categoria)
-                                <li>
-                                    <a class="dropdown-item" href="/categorias">
+                                <li  >
+                                    <a class="dropdown-item" href="/categorias?c={{$categoria->id}}">
                                         {{--                                    <i class="fas fa-laptop"></i>--}}
                                         {{$categoria->nome}}
                                         {{--                                    <span>1029</span>--}}
@@ -115,9 +117,10 @@
                                 @foreach($categoriasPai as $categoria)
                                     <div class="col-md-4 col-sm-4 ">
                                         <div class="cat-list">
-                                            <h3 class="cat-title"><a href="/categorias?c={{$categoria->id}}"> {{$categoria->nome}}
-                                                    {{--                                            <span class="count">277,959</span>--}}
-                                                </a></h3>
+                                            <h3 class="cat-title">
+                                                <a href="/categorias?c={{$categoria->id}}"> {{$categoria->nome}}
+                                                </a>
+                                            </h3>
                                             <ul class="cat-collapse cat-id-1 collapse show" style="">
                                                 @foreach($categoria->categorias_filho as $categoriaFilho)
                                                     <li><a href="/categorias?c={{$categoriaFilho->id}}">{{$categoriaFilho->nome}}</a></li>
@@ -146,7 +149,7 @@
                                 <div class="inner-box-content">
                                     <ul class="cat-list arrow">
                                         @foreach($categorias->where('categoria_pai_id','!=',null) as $categoria)
-                                            <li><a href="/categorias"> {{$categoria->nome}} </a></li>
+                                            <li><a href="/categorias?c={{$categoria->id}}"> {{$categoria->nome}} </a></li>
                                         @endforeach
                                     </ul>
                                 </div>
