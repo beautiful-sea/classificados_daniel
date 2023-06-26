@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AnunciantesResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnuncianteController extends Controller
 {
@@ -41,7 +42,20 @@ class AnuncianteController extends Controller
                     $query->whereRaw('lower(name) like (?)', "%{$search}%");
                 });
             });
+        }
+        if($request->has('filter')){
+            $filter = $request->get('filter');
 
+            if($filter === 'recentes'){
+                $anunciantes->orderBy('created_at', 'desc');
+            }
+            //Se for populares, faz um join com a tabela de visitas_pagina_anunciantes e ordena pelo total de visitas
+            if($filter === 'populares'){
+                $anunciantes->join('visitas_pagina_anunciantes', 'visitas_pagina_anunciantes.anunciante_id', '=', 'anunciantes.id')
+                    ->select('anunciantes.*', DB::raw('count(visitas_pagina_anunciantes.id) as total_visitas'))
+                    ->groupBy('anunciantes.id')
+                    ->orderBy('total_visitas', 'desc');
+            }
         }
         //Somente anunciantes com escopo 'scopeListaveis'
         $anunciantes->listaveis();

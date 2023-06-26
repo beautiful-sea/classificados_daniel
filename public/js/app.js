@@ -2720,6 +2720,123 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "TabsAnunciantes",
+  data: function data() {
+    return {
+      filter: 'recentes',
+      anunciantes: {
+        data: []
+      }
+    };
+  },
+  methods: {
+    setFilter: function setFilter(filter) {
+      this.filter = filter;
+      this.getAnunciantes();
+    },
+    getAnunciantes: function getAnunciantes() {
+      var _this = this;
+      var url = '/api/anunciantes';
+      url += '?filter=' + this.filter;
+      axios.get(url).then(function (response) {
+        _this.anunciantes = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getAnunciantes();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Categorias.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Categorias.vue?vue&type=script&lang=js& ***!
@@ -4107,6 +4224,7 @@ Vue.component('categorias-page', (__webpack_require__(/*! ./components/Categoria
 Vue.component('anunciante-page', (__webpack_require__(/*! ./components/Anunciante.vue */ "./resources/js/components/Anunciante.vue")["default"]));
 Vue.component('form-avaliacao', (__webpack_require__(/*! ./components/FormAvaliacao.vue */ "./resources/js/components/FormAvaliacao.vue")["default"]));
 Vue.component('admin-usuarios-avaliacoes', (__webpack_require__(/*! ./components/admin/usuarios/Avaliacoes.vue */ "./resources/js/components/admin/usuarios/Avaliacoes.vue")["default"]));
+Vue.component('tabs-anunciantes', (__webpack_require__(/*! ./components/TabsAnunciantes.vue */ "./resources/js/components/TabsAnunciantes.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -21280,6 +21398,45 @@ component.options.__file = "resources/js/components/FormAvaliacao.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/TabsAnunciantes.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/TabsAnunciantes.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true& */ "./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true&");
+/* harmony import */ var _TabsAnunciantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TabsAnunciantes.vue?vue&type=script&lang=js& */ "./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TabsAnunciantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "021f0e70",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/TabsAnunciantes.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/Categorias.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/admin/Categorias.vue ***!
@@ -21609,6 +21766,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TabsAnunciantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TabsAnunciantes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TabsAnunciantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/Categorias.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/admin/Categorias.vue?vue&type=script&lang=js& ***!
@@ -21846,6 +22019,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormAvaliacao_vue_vue_type_template_id_18860d4c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormAvaliacao_vue_vue_type_template_id_18860d4c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormAvaliacao.vue?vue&type=template&id=18860d4c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormAvaliacao.vue?vue&type=template&id=18860d4c&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true& ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TabsAnunciantes_vue_vue_type_template_id_021f0e70_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true&");
 
 
 /***/ }),
@@ -22978,6 +23168,201 @@ var staticRenderFns = [
         _vm._v(
           "Sua opinião é extremamente valiosa para nós, pois nos ajuda a melhorar continuamente a\n                        qualidade dos profissionais em nossa plataforma. Pedimos que gentilmente preencha uma rápida avaliação sobre sua experiência\n                        com o profissional contratado."
         ),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TabsAnunciantes.vue?vue&type=template&id=021f0e70&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-12 p-0" }, [
+    _c("div", { staticClass: "nav justify-content-center" }, [
+      _c(
+        "ul",
+        {
+          staticClass:
+            "nav-tabs nav-tabs-style-2 text-center px-2 p-md-0 m-0 mb-4",
+        },
+        [
+          _c(
+            "li",
+            {
+              class: "nav-filter " + (_vm.filter == "recentes" ? "active" : ""),
+              on: {
+                click: function ($event) {
+                  return _vm.setFilter("recentes")
+                },
+              },
+            },
+            [_vm._v("Mais Recentes")]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              class:
+                "nav-filter " + (_vm.filter == "populares" ? "active" : ""),
+              on: {
+                click: function ($event) {
+                  return _vm.setFilter("populares")
+                },
+              },
+            },
+            [_vm._v("Mais Populares")]
+          ),
+        ]
+      ),
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "portfolio-wrap grid items-3 items-padding" },
+      _vm._l(_vm.anunciantes.data, function (anunciante) {
+        return _c(
+          "div",
+          {
+            staticClass:
+              "portfolio-card isotope-item photo marketing Classidied-box",
+          },
+          [
+            _c("div", { staticClass: "card card-event info-overlay" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "img has-background",
+                  style:
+                    "background-image: url(" +
+                    anunciante.foto_principal +
+                    ")" +
+                    "; background-size:cover",
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "event-pop-link",
+                      attrs: { href: "/anunciante/" + anunciante.slug },
+                    },
+                    [_vm._m(0, true), _vm._v(" "), _vm._m(1, true)]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { attrs: { href: "/anunciante/" + anunciante.slug } },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top img-responsive",
+                        attrs: {
+                          alt: "340x230",
+                          "data-holder-rendered": "true",
+                          src: "images/10x6.gif",
+                        },
+                      }),
+                    ]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", { staticClass: "card-title" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/anunciante/" + anunciante.slug } },
+                    [_vm._v(_vm._s(anunciante.titulo))]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-event-info" }, [
+                  _c("p", { staticClass: "event-location" }, [
+                    _c("i", { staticClass: "far fa-compass" }),
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(anunciante.endereco.cidade.nome) +
+                        " - " +
+                        _vm._s(anunciante.endereco.cidade.estado.sigla) +
+                        "\n                            "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "pull-left left" }, [
+                  _c("div", {}, [
+                    _vm._v("por\n                                "),
+                    _c(
+                      "a",
+                      { attrs: { href: "/anunciante/" + anunciante.slug } },
+                      [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(anunciante.user.name) +
+                            "\n                                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]
+        )
+      }),
+      0
+    ),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "event-badges" }, [
+      _c("span", { staticClass: "badge badge-danger" }, [_vm._v(" EM ALTA")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "event-pop-info" }, [
+      _c("p", { staticClass: "publisher" }, [_c("strong")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "event-rating" }, [
+        _c("div", { staticClass: "star" }, [
+          _c("i", { staticClass: "fa fa-star" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-star" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-star" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-star" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-star" }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "review-count" }, [
+          _vm._v(" 4.89 | 89 avaliações"),
+        ]),
       ]),
     ])
   },

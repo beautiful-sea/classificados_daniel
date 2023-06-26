@@ -34,6 +34,8 @@ Vue.component('categorias-page', require('./components/Categorias.vue').default)
 Vue.component('anunciante-page', require('./components/Anunciante.vue').default);
 Vue.component('form-avaliacao', require('./components/FormAvaliacao.vue').default);
 Vue.component('admin-usuarios-avaliacoes', require('./components/admin/usuarios/Avaliacoes.vue').default);
+
+Vue.component('tabs-anunciantes', require('./components/TabsAnunciantes.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
