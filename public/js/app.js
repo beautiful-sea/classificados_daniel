@@ -2386,6 +2386,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Categorias.vue",
@@ -2731,6 +2736,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -22734,7 +22742,93 @@ var render = function () {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(2, true),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "modlist-bottom-area clearfix",
+                                      },
+                                      [
+                                        a.total_avaliacoes
+                                          ? _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "listing-rating grid-rating",
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "star d-flex justify-content-center",
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "rating-numbers",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            a.media_avaliacoes
+                                                          )
+                                                        ),
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _vm._l(
+                                                      Math.floor(
+                                                        a.media_avaliacoes
+                                                      ),
+                                                      function (star) {
+                                                        return _c("div", [
+                                                          _c("i", {
+                                                            staticClass:
+                                                              "fa fa-star",
+                                                            staticStyle: {
+                                                              color:
+                                                                "lightseagreen",
+                                                            },
+                                                          }),
+                                                        ])
+                                                      }
+                                                    ),
+                                                    _vm._v(" "),
+                                                    a.media_avaliacoes % 1 > 0
+                                                      ? _c("div", [
+                                                          _c("i", {
+                                                            staticClass:
+                                                              "fa fa-star",
+                                                            style: {
+                                                              clipPath:
+                                                                "polygon(0 0, " +
+                                                                (a.media_avaliacoes %
+                                                                  1) *
+                                                                  100 +
+                                                                "% 0, " +
+                                                                (a.media_avaliacoes %
+                                                                  1) *
+                                                                  100 +
+                                                                "% 100%, 0 100%)",
+                                                              color:
+                                                                "lightseagreen",
+                                                            },
+                                                          }),
+                                                        ])
+                                                      : _vm._e(),
+                                                  ],
+                                                  2
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm._m(2, true),
+                                      ]
+                                    ),
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -22867,48 +22961,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modlist-bottom-area clearfix" }, [
-      _c("div", { staticClass: "listing-rating grid-rating" }, [
-        _c("span", { staticClass: "rating-numbers" }, [_vm._v("4.0")]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "single-rating review_rate display-only",
-            attrs: { href: "", title: "good" },
-          },
-          [
-            _c("span", { staticClass: "rating-value" }, [
-              _vm._v("("),
-              _c("span", { attrs: { itemprop: "reviewCount" } }, [_vm._v("2")]),
-              _vm._v(")"),
-            ]),
-            _vm._v(" "),
-            _c("i", { staticClass: "fas fa-star" }),
-            _c("i", { staticClass: "fas fa-star" }),
-            _c("i", { staticClass: "fas fa-star" }),
-            _c("i", { staticClass: "fas fa-star" }),
-            _c("i", { staticClass: "far fa-star" }),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "price" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9",
-          },
-          [
-            _c("span", { staticClass: "alsp-field-caption" }),
-            _vm._v(" "),
-            _c("span", { staticClass: "alsp-field-content" }, [
-              _vm._v(" R$151/H "),
-            ]),
-          ]
-        ),
-      ]),
+    return _c("div", { staticClass: "price" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9",
+        },
+        [
+          _c("span", { staticClass: "alsp-field-caption" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "alsp-field-content" }, [
+            _vm._v(" R$151/H "),
+          ]),
+        ]
+      ),
     ])
   },
   function () {
@@ -23262,7 +23329,66 @@ var render = function () {
                       staticClass: "event-pop-link",
                       attrs: { href: "/anunciante/" + anunciante.slug },
                     },
-                    [_vm._m(0, true), _vm._v(" "), _vm._m(1, true)]
+                    [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "event-pop-info" }, [
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "event-rating" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "star d-flex justify-content-center",
+                            },
+                            [
+                              _vm._l(
+                                Math.floor(anunciante.media_avaliacoes),
+                                function (star) {
+                                  return _c("div", [
+                                    _c("i", { staticClass: "fa fa-star" }),
+                                  ])
+                                }
+                              ),
+                              _vm._v(" "),
+                              anunciante.media_avaliacoes % 1 > 0
+                                ? _c("div", [
+                                    _c("i", {
+                                      staticClass: "fa fa-star",
+                                      style: {
+                                        clipPath:
+                                          "polygon(0 0, " +
+                                          (anunciante.media_avaliacoes % 1) *
+                                            100 +
+                                          "% 0, " +
+                                          (anunciante.media_avaliacoes % 1) *
+                                            100 +
+                                          "% 100%, 0 100%)",
+                                      },
+                                    }),
+                                  ])
+                                : _vm._e(),
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "review-count" }, [
+                            _vm._v(
+                              " " +
+                                _vm._s(anunciante.media_avaliacoes) +
+                                " | " +
+                                _vm._s(anunciante.total_avaliacoes) +
+                                " " +
+                                _vm._s(
+                                  anunciante.total_avaliacoes === 1
+                                    ? "avaliação"
+                                    : " avaliações"
+                                )
+                            ),
+                          ]),
+                        ]),
+                      ]),
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -23344,27 +23470,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "event-pop-info" }, [
-      _c("p", { staticClass: "publisher" }, [_c("strong")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "event-rating" }, [
-        _c("div", { staticClass: "star" }, [
-          _c("i", { staticClass: "fa fa-star" }),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-star" }),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-star" }),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-star" }),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-star" }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "review-count" }, [
-          _vm._v(" 4.89 | 89 avaliações"),
-        ]),
-      ]),
-    ])
+    return _c("p", { staticClass: "publisher" }, [_c("strong")])
   },
 ]
 render._withStripped = true

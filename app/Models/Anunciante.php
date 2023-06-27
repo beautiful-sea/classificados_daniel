@@ -70,4 +70,15 @@ class Anunciante extends Model
     public function avaliacoes(){
         return $this->hasMany(Avaliacao::class, 'anunciante_id');
     }
+
+    public function getMediaAvaliacoesAttribute(){
+        return $this->avaliacoes()
+            ->join('avaliacao_campo', 'avaliacao_campo.avaliacao_id', '=', 'avaliacoes.id')
+            ->avg('avaliacao_campo.nota');
+    }
+
+    //Retorna o total de avaliações
+    public function getTotalAvaliacoesAttribute(){
+        return $this->avaliacoes()->count();
+    }
 }

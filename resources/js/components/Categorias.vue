@@ -115,13 +115,18 @@
                                             }}</span></span></span></p>
                                     </div>
                                     <div class="modlist-bottom-area clearfix">
-                                        <div class="listing-rating grid-rating"><span class="rating-numbers">4.0</span>
-                                            <a href="" class="single-rating review_rate display-only" title="good">
-                                                <span class="rating-value">(<span
-                                                        itemprop="reviewCount">2</span>)</span> <i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="far fa-star"></i> </a></div>
+                                        <div class="listing-rating grid-rating" v-if="a.total_avaliacoes">
+                                            <div class="star d-flex justify-content-center">
+                                                <span class="rating-numbers">{{ a.media_avaliacoes }}</span>
+                                                <div v-for="star in Math.floor(a.media_avaliacoes)">
+                                                    <i class="fa fa-star" style="color:lightseagreen"></i>
+                                                </div>
+                                                <div v-if="a.media_avaliacoes % 1 > 0">
+                                                    <i class="fa fa-star" :style="{ clipPath: 'polygon(0 0, ' + (a.media_avaliacoes % 1) * 100 + '% 0, ' + (a.media_avaliacoes % 1) * 100 + '% 100%, 0 100%)' ,color:'lightseagreen'}"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         <div class="price">
                                             <div class="alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9">
                                                 <span class="alsp-field-caption"> </span> <span

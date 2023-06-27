@@ -29,6 +29,9 @@ class AnunciantesResource extends ResourceCollection
                     'descricao' => $item->descricao,
                     'valor_hora' => $item->valor_hora?(double)$item->valor_hora:0.0,
                     'foto_principal' => $item->foto_principal ? asset('storage/' . $item->foto_principal) : asset('images/avatar.webp'),
+                    //formato 0.00 de duas casas decimais
+                    'media_avaliacoes'=> number_format($item->media_avaliacoes,2),
+                    'total_avaliacoes'=>$item->total_avaliacoes,
                     'user'  => [
                         'id' => $item->user->id,
                         'name' => $item->user->name,

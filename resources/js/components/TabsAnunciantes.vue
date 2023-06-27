@@ -19,13 +19,16 @@
                             </span>
                             <div class="event-pop-info">
                                 <p class="publisher"><strong> </strong></p>
-                                <div class="event-rating">
-                                    <div class="star">
-                                        <i class="fa  fa-star"></i>
-                                        <i class="fa  fa-star"></i> <i class="fa  fa-star"></i> <i
-                                            class="fa  fa-star"></i> <i class="fa  fa-star"></i>
+                                <div class="event-rating" >
+                                    <div class="star d-flex justify-content-center">
+                                        <div v-for="star in Math.floor(anunciante.media_avaliacoes)">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div v-if="anunciante.media_avaliacoes % 1 > 0">
+                                            <i class="fa fa-star" :style="{ clipPath: 'polygon(0 0, ' + (anunciante.media_avaliacoes % 1) * 100 + '% 0, ' + (anunciante.media_avaliacoes % 1) * 100 + '% 100%, 0 100%)' }"></i>
+                                        </div>
                                     </div>
-                                    <div class="review-count"> 4.89 | 89 avaliações</div>
+                                    <div class="review-count"> {{ anunciante.media_avaliacoes }} | {{ anunciante.total_avaliacoes }} {{anunciante.total_avaliacoes === 1?"avaliação":" avaliações" }}</div>
                                 </div>
                             </div>
                         </a>

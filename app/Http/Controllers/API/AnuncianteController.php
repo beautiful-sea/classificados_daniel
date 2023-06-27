@@ -60,6 +60,7 @@ class AnuncianteController extends Controller
         //Somente anunciantes com escopo 'scopeListaveis'
         $anunciantes->listaveis();
 
+
         $anunciantes = new AnunciantesResource($anunciantes->paginate($request->perPage ?? 10));
         return response()->json($anunciantes, 200);
     }
