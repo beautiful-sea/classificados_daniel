@@ -35,4 +35,10 @@ class Categoria extends Model
         //Quantidade de anunciantes com escopo 'scopeListaveis'
         return $this->anunciantes()->listaveis()->count();
     }
+
+    public function scopeComMaisAnunciantes($query)
+    {
+        //Retorna as categorias com mais visitas na pagina do anunciante
+        $query->withCount('anunciantes')->orderBy('anunciantes_count', 'desc');
+    }
 }

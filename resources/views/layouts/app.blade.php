@@ -1,7 +1,10 @@
 @php
-    $categorias  = \App\Models\Categoria::whereHas('anunciantes')->with('categorias_filho')->get();
+    $categorias  = \App\Models\Categoria::whereHas('anunciantes')->with('categorias_filho');
+    $categoriasPopulares = clone $categorias;
+    $categoriasPopulares = $categoriasPopulares->comMaisAnunciantes()->limit(10)->get();
        //categorias pai
-       $categoriasPai = $categorias->where('categoria_pai_id', null);
+       $categoriasPai = clone $categorias;
+       $categoriasPai = $categoriasPai->get()->where('subcategoria_id',null);
        $anunciantes = \App\Models\Anunciante::query()
            ->with('user')
            ->with('categoria')
@@ -148,7 +151,7 @@
                                 <h2 class="title-2">Mais Populares </h2>
                                 <div class="inner-box-content">
                                     <ul class="cat-list arrow">
-                                        @foreach($categorias->where('categoria_pai_id','!=',null) as $categoria)
+                                        @foreach($categoriasPopulares as $categoria)
                                             <li><a href="/categorias?c={{$categoria->id}}"> {{$categoria->nome}} </a></li>
                                         @endforeach
                                     </ul>
