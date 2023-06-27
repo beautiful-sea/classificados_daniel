@@ -1,5 +1,18 @@
 @extends('layouts.app')
 @section('title','Inicio')
+<?php
+    $qtd_anunciantes = \App\Models\Anunciante::count();
+    //Verifica o valor de $texto_total_profissionais é dezenas, centenas ou milhares
+    if($qtd_anunciantes < 100){
+        $texto_total_profissionais = $qtd_anunciantes;
+    }elseif($qtd_anunciantes < 1000){
+        $texto_total_profissionais = ' dezenas de';
+    } elseif($qtd_anunciantes < 10000){
+        $texto_total_profissionais = ' centenas de';
+    } else {
+        $texto_total_profissionais = ' milhares de';
+    }
+?>
 @section('content')
 
     <!-- Hero Section -->
@@ -10,7 +23,7 @@
                     <!-- Description -->
                     <div class="pr-lg-12 mb-5">
                         <h1 class="display-4 font-size-48--md-down text-white">Encontre Profissionais Qualificados</h1>
-                        <p class="lead text-white">Pesquise, compare e escolha entre 15,000+ serviços disponíveis</p>
+                        <p class="lead text-white">Pesquise, compare e escolha entre {{$texto_total_profissionais}} profissionais disponíveis</p>
                     </div>
                     <form action="/categorias" class="cflyformtheme cflyformbannersearch">
                         <fieldset>
