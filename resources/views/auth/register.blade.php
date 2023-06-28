@@ -16,20 +16,20 @@
                                 <div class="row">
                                     <div class="col-md-12 srname">
                                         <label>Nome</label>
-                                        <input type="text" name="name" placeholder="Seu nome aqui" required>
+                                        <input type="text" name="name"  autocomplete="off"  placeholder="Seu nome aqui" required>
                                     </div>
                                     <div class="col-md-12 email">
                                         <label>Email</label>
-                                        <input type="email" name="email" placeholder="Seu e-mail aqui" required>
+                                        <input type="email" name="email" autocomplete="off" placeholder="Seu e-mail aqui" required>
                                     </div>
                                     <div class="col-md-12 password">
                                         <label>Senha</label>
-                                        <input type="password" name="password" placeholder="Sua senha aqui" required>
+                                        <input type="password"  autocomplete="off"  name="password" placeholder="Sua senha aqui" required>
                                     </div>
 
                                     <div class="col-md-12 email">
                                             <label>Categoria</label>
-                                            <select  name="categoria_id" id="profissao" class="select2 form-control" style="width: 100%; border: 1px solid rgba(150, 150, 150,.3); height: 40px; font-size: 120%; margin-top: 10px;">
+                                            <select  name="categoria_id" class="select2 form-control" style="width: 100%; border: 1px solid rgba(150, 150, 150,.3); height: 40px; font-size: 120%; margin-top: 10px;">
                                                 <option value="0">Selecione uma categoria</option>
                                                 @foreach($categorias as $categoria)
                                                     <option value="{{$categoria->id}}">{{$categoria->nome}}</option>

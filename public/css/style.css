@@ -7586,7 +7586,7 @@ blog-single-section
 	padding: 100px 0;
 }
 .registration .registration-box {
-	width: 500px;
+	width: auto;
 	margin: auto;
 	-webkit-box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
