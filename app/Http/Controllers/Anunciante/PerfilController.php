@@ -17,7 +17,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('perfil');
+        $avaliacoes = auth()->user()->anunciante->avaliacoes;
+        return view('perfil') ->with('avaliacoes', $avaliacoes);
     }
 
     public function update(Request $request, $id)

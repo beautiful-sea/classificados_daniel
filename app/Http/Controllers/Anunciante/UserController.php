@@ -17,12 +17,6 @@ class UserController extends Controller
         if(auth()->user()->admin){
             return redirect()->route('admin.dashboard');
         }
-        $categorias = \App\Models\Categoria::all();
-        return view('anunciantes.perfil',[
-            'categorias' => $categorias
-        ]);
+        return view('anunciantes.perfil' );
     }
-
-
-
 }

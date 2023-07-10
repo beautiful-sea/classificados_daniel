@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AnunciantesResource;
+use App\Models\AvaliacaoCampo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AnuncianteController extends Controller
@@ -120,5 +122,29 @@ class AnuncianteController extends Controller
             ->with('endereco.estado') ;
         $anunciantes = new AnunciantesResource($anunciantes->paginate($request->perPage ?? 10));
         return response()->json($anunciantes, 200);
+    }
+
+    public function avaliacoes(Request $request){
+        $avaliacoes =  auth()->user()->anunciante->avaliacoes()
+            ->orderBy('created_at', 'desc')
+            ->paginate($request->perPage ?? 10);
+        return response()->json($avaliacoes, 200);
+    }
+
+    public function deleteAvaliacao(Request $request, $id){
+        $avaliacao = \App\Models\Avaliacao::find($id);
+        if($avaliacao->user_id != auth()->user()->id){
+            return response()->json(['message' => 'Você não tem permissão para excluir essa avaliação!'], 403);
+        }
+        $avaliacao->delete();
+        return response()->json(['message' => 'Avaliação excluída com sucesso!'], 200);
+    }
+
+    public function deletarAvaliacao(Request $request, $id){
+        $avaliacao = \App\Models\Avaliacao::find($id);
+        AvaliacaoCampo::where('avaliacao_id', $avaliacao->id)->delete();
+
+        $avaliacao->delete();
+        return response()->json(['message' => 'Avaliação excluída com sucesso!'], 200);
     }
 }

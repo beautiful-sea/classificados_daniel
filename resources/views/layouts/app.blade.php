@@ -31,6 +31,7 @@
     {{--    Font awesome:--}}
     <link href="/css/fontawesome.min.css" rel="stylesheet" type="text/css">
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body >
 <header class="header-static navbar-sticky navbar-light shadow">

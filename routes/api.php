@@ -54,6 +54,8 @@ Route::group([], function () {
     //Favoritos /anunciantes/favoritos
     Route::get('/anunciantes/favoritos', [\App\Http\Controllers\Api\AnuncianteController::class, 'favoritos']);
 
+    Route::delete('/anunciantes/avaliacoes/{id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'deleteAvaliacao']);
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
         Route::put('/categorias/{id}', [\App\Http\Controllers\Api\CategoriaController::class, 'update'])->name('categorias.update');
         Route::get('/anunciantes/{id}/avaliacoes', [\App\Http\Controllers\AnuncianteController::class, 'avaliacoes']);

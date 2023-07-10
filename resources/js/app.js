@@ -13,6 +13,12 @@ window.toastr = toastr;
 window.swal = require('sweetalert2');
 window.Vue = require('vue').default;
 
+//Obtenha o valor do token CSRF da meta tag
+const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+// Configure o token CSRF como cabeçalho de solicitação global para o Axios
+axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -32,6 +38,7 @@ Vue.component('admin-categorias', require('./components/admin/Categorias.vue').d
 Vue.component('anunciante-editar-perfil', require('./components/anunciante/EditarPerfil.vue').default);
 Vue.component('categorias-page', require('./components/Categorias.vue').default);
 Vue.component('anunciante-page', require('./components/Anunciante.vue').default);
+Vue.component('anunciante-avaliacoes', require('./components/anunciante/avaliacoes/AvaliacoesList.vue').default);
 Vue.component('form-avaliacao', require('./components/FormAvaliacao.vue').default);
 Vue.component('admin-usuarios-avaliacoes', require('./components/admin/usuarios/Avaliacoes.vue').default);
 

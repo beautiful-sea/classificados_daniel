@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('anunciante/{id}/fotos', [App\Http\Controllers\Anunciante\PerfilController::class,'updateFotos']) ;
     Route::put('anunciante/{id}', [App\Http\Controllers\Anunciante\PerfilController::class,'update']) ;
 
+    Route::get('/anunciantes/avaliacoes', [\App\Http\Controllers\Api\AnuncianteController::class, 'avaliacoes']);
+    Route::delete('/anunciantes/avaliacoes/{id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'deletarAvaliacao']);
+
+
     //Grupo de rotas com prefixo admin, namespace admin e middleware admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');

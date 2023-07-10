@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AvaliacaoController extends Controller
@@ -14,8 +15,10 @@ class AvaliacaoController extends Controller
      */
     public function index(Request $request, $slug)
     {
-        $anunciante_avaliado = \App\Models\Anunciante::where('slug', $slug)->firstOrFail();
-        return view('avaliacao')->with('anunciante_avaliado', $anunciante_avaliado->user);
+        $anunciante_avaliado = User::whereHas('anunciante', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->with('anunciante')->first();
+        return view('avaliacao')->with('anunciante_avaliado', $anunciante_avaliado);
     }
 
     /**
