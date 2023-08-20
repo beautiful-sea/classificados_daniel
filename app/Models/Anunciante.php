@@ -81,4 +81,8 @@ class Anunciante extends Model
     public function getTotalAvaliacoesAttribute(){
         return $this->avaliacoes()->count();
     }
+
+    public function agendamentos(){
+        return $this->hasMany(AnunciantesAgendamento::class, 'anunciante_id');
+    }
 }

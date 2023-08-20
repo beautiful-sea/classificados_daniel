@@ -177,6 +177,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item  {{request()->path() == 'admin/historico_pesquisas'?'active':''}} ">
+                    <a class=" nav-link d-flex align-items-center" href="/admin/historico_pesquisas">
+                        <i data-feather="search"></i><span data-i18n="Search">Histórico</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>

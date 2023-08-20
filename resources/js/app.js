@@ -7,6 +7,8 @@
 //Import axios
 import axios from 'axios';
 import toastr from 'toastr';
+import Calendar from 'v-calendar/lib/components/calendar.umd'
+import DatePicker from 'v-calendar/lib/components/date-picker.umd'
 
 window.axios = axios;
 window.toastr = toastr;
@@ -29,6 +31,8 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component('v-calendar', Calendar)
+Vue.component('v-date-picker', DatePicker)
 
 Vue.component('loader', require('./components/helpers/Loader.vue').default);
 Vue.component('admin-usuarios', require('./components/admin/Usuarios.vue').default);
@@ -43,6 +47,8 @@ Vue.component('form-avaliacao', require('./components/FormAvaliacao.vue').defaul
 Vue.component('admin-usuarios-avaliacoes', require('./components/admin/usuarios/Avaliacoes.vue').default);
 
 Vue.component('tabs-anunciantes', require('./components/TabsAnunciantes.vue').default);
+Vue.component('anunciante-agenda', require('./components/anunciante/agenda/Agenda.vue').default);
+Vue.component('agendar', require('./components/Agendar.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

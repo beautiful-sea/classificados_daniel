@@ -48,6 +48,18 @@
                                 <h3>Comentário</h3>
                                 <textarea class="form-control" v-model="comentario" name="comentario" rows="5" ></textarea>
                             </div>
+
+                            <div class="col-12">
+                                <h3>Deseja cadastrar-se em nosso site?</h3>
+                              <div class="d-flex">
+                                <label>Sim, desejo me cadastrar</label>
+                                <input  class="ml-1"  :value="true" v-model="desejaCadastrar" type="checkbox">
+                              </div>
+<!--                               <div v-if="desejaCadastrar">-->
+<!--                                 <h3>Senha</h3>-->
+<!--                                 <input class="form-control" v-model="senha" type="password" name="senha"   required>-->
+<!--                               </div>-->
+                            </div>
                             <div class="col-md-12 mt-5">
                                 <button :disabled="loading" type="submit" @click="enviarAvaliacao()" class="btn-send" > Enviar avaliação</button>
                             </div>
@@ -71,7 +83,9 @@ export default {
             email : '',
             whatsapp : '',
             comentario : '',
-            loading: false
+          senha: '',
+            loading: false,
+            desejaCadastrar: false
         }
     },
     methods:{

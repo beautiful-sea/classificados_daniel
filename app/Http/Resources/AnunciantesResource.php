@@ -62,7 +62,10 @@ class AnunciantesResource extends ResourceCollection
 
                             'lat'   => (double)$item->endereco->lat,
                             'lng'   => (double)$item->endereco->lng,
-                        ]
+                        ],
+                    'agendamentos'  => $item->agendamentos()->where('status','disponivel')
+                        ->whereDate('data','>',date('Y-m-d'))
+                        ->get(),
                     ];
             }),
             'links' => [

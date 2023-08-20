@@ -42,6 +42,8 @@
                             <a class="nav-link tab-vertical__nav-link" id="v-pills-Saved-tab" data-toggle="pill"
                                href="#v-pills-Saved" role="tab" aria-controls="v-pills-Saved" aria-selected="false">Editar
                                 Perfil</a>
+                            <a class="nav-link tab-vertical__nav-link" id="agenda-tab" data-toggle="pill"
+                                href="#agenda" role="tab" aria-controls="v-pills-Saved" aria-selected="false">Agenda</a>
                             <a class="nav-link tab-vertical__nav-link" id="v-pills-avaliacoes-tab" data-toggle="pill"
                                href="#v-pills-avaliacoes" role="tab" aria-controls="v-pills-avaliacoes"
                                aria-selected="false">Avaliações</a>
@@ -54,7 +56,7 @@
 
                     <!-- Tab Content -->
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-Dashboard" role="tabpanel"
+                        <div class="tab-pane fade" id="v-pills-Dashboard" role="tabpanel"
                              aria-labelledby="v-pills-key-Dashboard-tab">
                             <div class="row">
                                 <div class="inner-box inner-boxdrash">
@@ -187,6 +189,24 @@
                                         <div class="row">
                                             <anunciante-editar-perfil
                                                     :user-id="{{auth()->user()->id}}"></anunciante-editar-perfil>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade  show active" id="agenda" role="tabpanel"
+                             aria-labelledby="v-pills-key-Saved-tab">
+                            <div class="row">
+                                <div class="classi-ads-detail">
+                                    <div class="account-overview">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h4 class="profile-heading">Agenda</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <anunciante-agenda></anunciante-agenda>
                                         </div>
                                     </div>
                                 </div>

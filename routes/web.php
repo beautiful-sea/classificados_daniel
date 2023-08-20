@@ -26,6 +26,12 @@ Route::get('cidades/get/{id}', [App\Http\Controllers\CidadeController::class, 'g
 Route::get('categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias');
 Route::get('avaliacao/{slug}', [App\Http\Controllers\AvaliacaoController::class, 'index'])->name('avaliacao');
 Route::get('/anunciante/{slug}', [App\Http\Controllers\AnuncianteController::class, 'show'])->name('anunciante.show');
+
+
+Route::get('/anunciantes/{anunciante_id}/agendamentos', [\App\Http\Controllers\AgendamentoController::class, 'index']);
+Route::post('/anunciantes/{anunciante_id}/agendamentos', [\App\Http\Controllers\AgendamentoController::class, 'store']);
+Route::post('/anunciantes/{anunciante_id}/agendamentos', [\App\Http\Controllers\AgendamentoController::class, 'store']);
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\Anunciante\UserController::class, 'index'])->name('perfil');
     Route::put('anunciante/{id}/fotos', [App\Http\Controllers\Anunciante\PerfilController::class,'updateFotos']) ;
@@ -34,6 +40,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/anunciantes/avaliacoes', [\App\Http\Controllers\Api\AnuncianteController::class, 'avaliacoes']);
     Route::delete('/anunciantes/avaliacoes/{id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'deletarAvaliacao']);
 
+    //AGENDAMENTOS
+
+    Route::get('/anunciantes/agendamentos/{agendamento_id}', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'show']);
+    Route::post('/anunciantes/agendamentos/finalizar/{agendamento_id}', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'finalizar']);
+    Route::post('/anunciantes/agendamentos/cancelar/{agendamento_id}', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'cancelar']);
+    Route::get('/anunciantes/agendamentos', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'index']);
+    Route::post('/anunciantes/agendamentos/salvarDatas', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'salvarDatas']);
+    Route::post('/anunciantes/agendamentos/salvarHorarios', [\App\Http\Controllers\Anunciante\AnunciantesAgendamentosController::class, 'salvarHorarios']);
 
     //Grupo de rotas com prefixo admin, namespace admin e middleware admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
@@ -44,6 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usuarios');
         Route::get('categorias', [App\Http\Controllers\Admin\CategoriaController::class, 'index'])->name('categorias');
         Route::get('avaliacoes', [App\Http\Controllers\Admin\AvaliacaoController::class, 'index'])->name('avaliacoes');
+        Route::get('historico_pesquisas', [App\Http\Controllers\Admin\HistoricoPesquisaController::class, 'index'])->name('historico_pesquisas');
     });
 });
 

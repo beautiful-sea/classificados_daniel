@@ -40,6 +40,9 @@ Route::group([], function () {
     Route::get('/anunciante/{slug}', [\App\Http\Controllers\Api\AnuncianteController::class, 'anuncianteBySlug']);
     Route::get('/anunciante/user/{user_id}', [\App\Http\Controllers\Api\AnuncianteController::class, 'anuncianteByUser']);
 
+    //Agendamentos
+    Route::post('/anunciantes/agendamentos', [\App\Http\Controllers\AgendamentoController::class, 'store']);
+    Route::get('/anunciantes/{anunciante_id}/agendamentos', [\App\Http\Controllers\AgendamentoController::class, 'index']);
 
     //Cliques no botao de contato
     Route::post('/anunciante/{anunciante_id}/clique_contato', [\App\Http\Controllers\Api\AnuncianteController::class, 'cliqueContato']);
