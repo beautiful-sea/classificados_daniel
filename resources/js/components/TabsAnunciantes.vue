@@ -15,7 +15,7 @@
                          :style="'background-image: url('+anunciante.foto_principal+')'+'; background-size:cover' ">
                         <a :href="'/anunciante/'+anunciante.slug" class="event-pop-link">
                             <span class="event-badges ">
-                                 <span class="badge badge-danger"> EM ALTA</span>
+                                 <span class="badge badge-danger" v-if="anunciante.tag">{{anunciante.tag }}</span>
                             </span>
                             <div class="event-pop-info">
                                 <p class="publisher"><strong> </strong></p>

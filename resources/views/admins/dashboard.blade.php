@@ -95,7 +95,7 @@
                                                         @else
                                                             <i data-feather="trending-down"></i>
                                                         @endif
-                                                        {{$porcentagem_visitas_7_dias}}%
+                                                        {{number_format($porcentagem_visitas_7_dias,2)}}%
                                                     </span>
                                                     <span>Visitantes nos ultimos 7 dias</span>
                                                 </div>
@@ -128,7 +128,7 @@
                                                         @else
                                                             <i data-feather="trending-down"></i>
                                                         @endif
-                                                        {{$porcentagem_cliques_contato_7_dias}}%
+                                                        {{number_format($porcentagem_cliques_contato_7_dias,2)}}%
                                                     </span>
                                                     <span>Contatos nos ultimos 7 dias</span>
                                                 </div>

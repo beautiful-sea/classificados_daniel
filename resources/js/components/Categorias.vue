@@ -127,10 +127,10 @@
                                             </div>
 
                                         </div>
-                                        <div class="price">
+                                        <div v-if="a.tag" class="price">
                                             <div class="alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9">
-                                                <span class="alsp-field-caption"> </span> <span
-                                                    class="alsp-field-content"> R$151/H </span></div>
+                                                <span class="alsp-field-caption badge bg-success"> </span> <span
+                                                    class="alsp-field-content badge bg-success text-white"> {{a.tag}} </span></div>
                                         </div>
                                     </div>
                                 </div>

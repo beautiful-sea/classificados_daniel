@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Anunciante extends Model
 {
@@ -18,7 +19,7 @@ class Anunciante extends Model
         'valor_hora',
     ];
 
-    protected $appends = ['foto_perfil','valor_hora_real' ];
+    protected $appends = ['foto_perfil','valor_hora_real','tag'];
 
     public function user()
     {
@@ -84,5 +85,22 @@ class Anunciante extends Model
 
     public function agendamentos(){
         return $this->hasMany(AnunciantesAgendamento::class, 'anunciante_id');
+    }
+
+    public function getTagAttribute(){
+        $campos = [];
+        foreach($this->avaliacoes as $avaliacao){
+            $campos[] = $avaliacao->avaliacao_campos;
+        }
+        $campos = collect($campos)->collapse()->groupBy('campo_avaliacao_id')->values();
+
+        $campo_mais_exibido = $campos->sortByDesc('count')->first();
+
+        if($campo_mais_exibido){
+         return $campo_mais_exibido[0]->campo_avaliacao->nome;
+
+        }else{
+            $campo_mais_exibido = null;
+        }
     }
 }

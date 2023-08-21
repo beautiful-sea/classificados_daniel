@@ -64807,7 +64807,42 @@ var render = function () {
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
-                                        _vm._m(2, true),
+                                        a.tag
+                                          ? _c(
+                                              "div",
+                                              { staticClass: "price" },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9",
+                                                  },
+                                                  [
+                                                    _c("span", {
+                                                      staticClass:
+                                                        "alsp-field-caption badge bg-success",
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "alsp-field-content badge bg-success text-white",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          " " +
+                                                            _vm._s(a.tag) +
+                                                            " "
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
                                       ]
                                     ),
                                   ]
@@ -64893,7 +64928,7 @@ var render = function () {
                           staticClass:
                             "col-lg-12 col-md-12 col-sm-12 col-xs-12 alsp-listing listing-post-style-listview_mod alsp-featured clearfix",
                         },
-                        [_vm._m(3)]
+                        [_vm._m(2)]
                       )
                     : _vm._e(),
                 ],
@@ -64935,27 +64970,6 @@ var staticRenderFns = [
           attrs: { "data-toggle": "collapse", href: "#collapse-5" },
         },
         [_vm._v("Localização")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "price" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "alsp-field alsp-field-output-block alsp-field-output-block-price alsp-field-output-block-9",
-        },
-        [
-          _c("span", { staticClass: "alsp-field-caption" }),
-          _vm._v(" "),
-          _c("span", { staticClass: "alsp-field-content" }, [
-            _vm._v(" R$151/H "),
-          ]),
-        ]
       ),
     ])
   },
@@ -65359,10 +65373,16 @@ var render = function () {
                       attrs: { href: "/anunciante/" + anunciante.slug },
                     },
                     [
-                      _vm._m(0, true),
+                      _c("span", { staticClass: "event-badges" }, [
+                        anunciante.tag
+                          ? _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v(_vm._s(anunciante.tag)),
+                            ])
+                          : _vm._e(),
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "event-pop-info" }, [
-                        _vm._m(1, true),
+                        _vm._m(0, true),
                         _vm._v(" "),
                         _c("div", { staticClass: "event-rating" }, [
                           _c(
@@ -65487,14 +65507,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "event-badges" }, [
-      _c("span", { staticClass: "badge badge-danger" }, [_vm._v(" EM ALTA")]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
