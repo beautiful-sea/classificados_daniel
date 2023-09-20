@@ -71,11 +71,11 @@
 
 
         <!--        Valor Hora-->
-        <div class="col-lg-12 form-group">
-            <label>Valor Hora</label>
-            <input class="form-control" v-model="anunciante.anunciante.valor_hora" name="valor_hora"
-                   placeholder="Valor Hora" type="text" v-mask-money>
-        </div>
+<!--        <div class="col-lg-12 form-group">-->
+<!--            <label>Valor Hora</label>-->
+<!--            <input class="form-control" v-model="anunciante.anunciante.valor_hora" name="valor_hora"-->
+<!--                   placeholder="Valor Hora" type="text" v-mask-money>-->
+<!--        </div>-->
 
         <hr>
 
@@ -88,10 +88,15 @@
 
         <!--        Foto principal-->
         <div class="col-lg-12 form-group">
-            <label>Foto principal</label>
+            <label>Imagem principal</label>
             <input class="form-control" @input="setFotoPrincipal" name="foto_principal" placeholder="Foto principal"
                    type="file">
         </div>
+      <div class="col-lg-12 form-group">
+        <label>Imagens</label>
+        <input class="form-control" multiple @input="setImagens" name="imagens[]" placeholder="Imagens"
+               type="file">
+      </div>
 
         <!--        Botao de salvar fotos-->
         <div class="col-lg-12 form-group">
@@ -130,7 +135,8 @@ export default {
                     estado: {}
                 },
                 anunciante: {
-                    categoria: {}
+                    categoria: {},
+                  imagens:[]
                 }
             }
         }
@@ -171,7 +177,7 @@ export default {
                 var geocoder = new google.maps.Geocoder();
 
                 //Endereco é logradouro + cidade + estado
-                let endereco = this.anunciante.endereco.logradouro + ', ' + this.anunciante.endereco.cidade.nome + ', ' + this.anunciante.endereco.estado.sigla;
+                let endereco = this.anunciante.endereco.logradouro + ', ' + this.anunciante.endereco?.cidade?.nome + ', ' + this.anunciante?.endereco?.estado?.sigla;
                 geocoder.geocode({'address': endereco}, function (results, status) {
                     if (status == 'OK') {
                         self.lat = results[0].geometry.location.lat();
@@ -253,12 +259,24 @@ export default {
             let url = '/anunciante/' + this.anunciante.anunciante.id + '/fotos';
             let formData = new FormData();
             formData.append('foto_principal', this.anunciante.anunciante.foto_principal);
-            axios.put(url, formData).then(response => {
+            if(this.anunciante.anunciante.imagens){
+              for (let i = 0; i < this.anunciante.anunciante.imagens.length; i++) {
+                formData.append('imagens[]', this.anunciante.anunciante.imagens[i]);
+              }
+            }
+            axios.put(url, formData,{
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then(response => {
                 toastr.success('Fotos salvas com sucesso!');
             });
         },
         setFotoPrincipal(event) {
             this.anunciante.anunciante.foto_principal = event.target.files[0];
+        },
+        setImagens(event) {
+            this.anunciante.anunciante.imagens = event.target.files;
         },
         getCidades() {
             let url = '/api/cidades/' + this.anunciante.endereco.estado_id;
@@ -302,8 +320,14 @@ export default {
             let url = '/api/anunciante/user/' + this.userId;
             axios.get(url).then(response => {
                 this.anunciante = response.data;
-                this.lat = this.anunciante.endereco.lat;
-                this.lng = this.anunciante.endereco.lng;
+                //Se o endereco nao tiver lat e lng, seta para do rio de janeiro
+                if (!this.anunciante.endereco.lat || !this.anunciante.endereco.lng) {
+                    this.anunciante.endereco.lat = -22.2406799;
+                    this.anunciante.endereco.lng = -43.7445063;
+                }else{
+                  this.anunciante.endereco.lat = Number(this.anunciante.endereco.lat);
+                  this.anunciante.endereco.lng = Number(this.anunciante.endereco.lng);
+                }
                 if (this.anunciante.endereco.estado_id) {
                     this.getCidades();
                 }

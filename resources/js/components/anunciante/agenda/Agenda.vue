@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row">
-      <v-calendar
+      <v-calendar style="width: 100%"
           v-if="!editandoAgenda"
           :attributes="attributes"
           is-expanded
@@ -55,7 +55,9 @@
         </button>
       </div>
 
-
+      <div v-if="!editandoAgenda && !diaSelecionado" style="width: 100%; height: 10px">
+        Selecione uma data para visualizar os horários disponíveis
+      </div>
     </div>
 
 <!--    <h1>{{ attributes }}</h1>-->
@@ -237,7 +239,13 @@ export default {
       this.horariosDiaSelecionado.push( horario);
     },
     removerHorario(horario) {
-      let index = this.horariosDiaSelecionado.indexOf(horario);
+      //busca em horariosDiaSelecionado o valor do horario selecionado
+      let horarioSelecionado = this.horariosDiaSelecionado.find((data) => {
+        return data.horario === horario;
+      });
+      //busca o index do horario selecionado
+      let index = this.horariosDiaSelecionado.indexOf(horarioSelecionado);
+      //remove o horario selecionado
       this.horariosDiaSelecionado.splice(index, 1);
     },
     visualizarData(day) {

@@ -38,7 +38,11 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <!-- Logo -->
-            <p class="logo"><a class="navbar-brand dropdown-item" href="/">LOGO </a></p>
+            <p class="logo">
+                <a class="navbar-brand dropdown-item" href="/">
+                <img src="/images/logo.png" style="height: 65px">
+                </a>
+            </p>
             <button class="navbar-toggler ml-auto btn-categoria" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
@@ -74,11 +78,11 @@
                                 <br>
                                 <span class="perfil-email"><small>{{Auth::user()->email}}</small></span>
                             </div>
-                            <div class="nav-perfil-photo">
+                            <div class="nav-perfil-photo " style="margin-left: 10px">
                                 <div class="avatar-content nav-perfil-item">
                                     <a href="/home" class="">
                                         @if(auth()->user()->photo_path)
-                                            <img src="{!! \Illuminate\Support\Facades\Storage::url(auth()->user()->photo_path) !!}"
+                                            <img src="{{auth()->user()->photo_path}}"
                                                  style="width: 100%; height: 100%;" alt="">
                                         @else
 

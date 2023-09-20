@@ -19,7 +19,7 @@ class Anunciante extends Model
         'valor_hora',
     ];
 
-    protected $appends = ['foto_perfil','valor_hora_real','tag'];
+    protected $appends = ['foto_perfil','valor_hora_real','tag','foto_principal_path'];
 
     public function user()
     {
@@ -102,5 +102,9 @@ class Anunciante extends Model
         }else{
             $campo_mais_exibido = null;
         }
+    }
+
+    public function imagens(){
+        return $this->hasMany(AnuncianteImagem::class, 'anunciante_id');
     }
 }

@@ -55,8 +55,9 @@ class PerfilController extends Controller
 
     public function updateFotos(Request $request, $id)
     {
-        $anunciante = Anunciante::find($id)->anunciante;
+        dd($request->all());
 
+        $anunciante = Anunciante::find($id)->anunciante;
         //Salva no Storage public a foto principal na pasta do anunciante com o nome foto_principal_{$id}
         if ($request->hasFile('foto_principal')) {
             $foto_principal = $request->file('foto_principal');
@@ -64,6 +65,19 @@ class PerfilController extends Controller
             $foto_principal->storeAs('/anunciantes', 'foto_principal_' . $id.$extension , 'public');
             $anunciante->foto_principal = 'anunciantes/foto_principal_' . $id.$extension ;
             $anunciante->save();
+        }
+
+        //Salva no Storage public as fotos na pasta do anunciante com o nome foto_{$id}_{$i}
+        if ($request->hasFile('imagens[]')) {
+
+            $fotos = $request->file('imagens[]');
+            foreach ($fotos as $i => $foto) {
+                $extension = $foto->extension();
+                $foto->storeAs('/anunciantes', 'foto_' . $id . '_' . $i.$extension, 'public');
+                $anunciante->imagens()->create([
+                    'path' => 'anunciantes/foto_' . $id . '_' . $i.$extension,
+                ]);
+            }
         }
 
         return response()->json( 'Fotos atualizadas com sucesso!');

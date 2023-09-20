@@ -17,13 +17,14 @@ class AgendamentoController extends Controller
         return response()->json($agendamentos);
     }
 
-    public function store(Request $request, $anunciante_id){
+    public function store(Request $request){
         try{
+            $anunciante_id = $request->anunciante_id;
             $cliente = $request->cliente;
             $data = $request->data;
             $horario = $request->horario;
-            $horario = \Carbon\Carbon::parse($horario)->format('H:i:s');
             $data = \Carbon\Carbon::parse($data)->format('Y-m-d');
+
             $anunciantes_agendamento = AnunciantesAgendamento::where('anunciante_id',$anunciante_id)
                 ->where('data',$data)
                 ->where('horario',$horario)
@@ -42,7 +43,7 @@ class AgendamentoController extends Controller
                 ]);
                 $agendamento = \App\Models\Agendamento::create($request->all());
                 $anunciantes_agendamento->update(['status'=>'agendado']);
-                return response()->json($agendamento);
+                return response()->json($anunciantes_agendamento);
             }
             return response()->json(['error'=>'Agendamento não disponível. '],400);
         } catch (\Exception $e){

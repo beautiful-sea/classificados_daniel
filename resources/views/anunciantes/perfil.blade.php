@@ -36,13 +36,13 @@
                         <!-- Tab Nav -->
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active tab-vertical__nav-link" id="v-pills-Dashboard-tab"
+                            <a class="nav-link  tab-vertical__nav-link" id="v-pills-Dashboard-tab"
                                data-toggle="pill" href="#v-pills-Dashboard" role="tab" aria-controls="v-pills-Dashboard"
                                aria-selected="true">Perfil</a>
                             <a class="nav-link tab-vertical__nav-link" id="v-pills-Saved-tab" data-toggle="pill"
                                href="#v-pills-Saved" role="tab" aria-controls="v-pills-Saved" aria-selected="false">Editar
                                 Perfil</a>
-                            <a class="nav-link tab-vertical__nav-link" id="agenda-tab" data-toggle="pill"
+                            <a class="nav-link tab-vertical__nav-link active" id="agenda-tab" data-toggle="pill"
                                 href="#agenda" role="tab" aria-controls="v-pills-Saved" aria-selected="false">Agenda</a>
                             <a class="nav-link tab-vertical__nav-link" id="v-pills-avaliacoes-tab" data-toggle="pill"
                                href="#v-pills-avaliacoes" role="tab" aria-controls="v-pills-avaliacoes"
@@ -89,10 +89,10 @@
                                                                 class="value-perfil">{{auth()->user()->endereco->logradouro}}</span>
                                                     </p>
                                                     <p><span class="title-perfil">Cidade: </span> <span
-                                                                class="value-perfil">{{auth()->user()->endereco->cidade->nome}}</span>
+                                                                class="value-perfil">{{auth()->user()->endereco->cidade->nome??'Não cadastrado'}}</span>
                                                     </p>
                                                     <p><span class="title-perfil">Estado: </span> <span
-                                                                class="value-perfil">{{auth()->user()->endereco->estado->sigla}}</span>
+                                                                class="value-perfil">{{auth()->user()->endereco->estado->sigla??'Não cadastrado'}}</span>
                                                     </p>
                                                     <p><span class="title-perfil">CEP: </span> <span
                                                                 class="value-perfil">{{auth()->user()->endereco->cep}}</span>
@@ -144,31 +144,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-default">
-                                            <div class="card-header">
-                                                <h4 class="card-title"><a href="#collapseB3" aria-expanded="true"
-                                                                          data-toggle="collapse"> Preferências </a></h4>
-                                            </div>
-                                            <div class="panel-collapse collapse" id="collapseB3">
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    Eu quero receber novidades. </label>
-                                                            </div>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    Eu quero receber notícias e promoções por email.
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <!--/.row-box End-->
 
@@ -234,7 +210,7 @@
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZT9G4GtErAFIkLrBVLaNJIyUr44wRqLY&v=weekly"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY5_-0H8f5jxqkIW_2egw90w2igZcQPb4&v=weekly"
     ></script>
 
 @endsection

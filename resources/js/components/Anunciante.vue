@@ -14,7 +14,27 @@
               <p>
                 {{ anunciante.descricao }}
               </p>
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" :src="anunciante.foto_principal_path" alt="First slide">
+                  </div>
+                  <div class="carousel-item " v-for="imagem in anunciante.imagens">
+                    <img class="d-block w-100" :src="imagem.full_path"  alt="">
+                  </div>
 
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+
+
+              </div>
 
             </div>
             <div class="col-md-4">
@@ -54,8 +74,7 @@
           <div class="row">
             <agendar v-if="anunciante.id" :anunciante_id="anunciante.id"></agendar>
           </div>
-<!--          <div id="map" style="width: 100%; height: 400px;"></div>-->
-
+          <div id="map" style="width: 100%; height: 400px; margin-top:30px"></div>
         </div>
       </div>
     </div>

@@ -2275,6 +2275,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Anunciante",
@@ -4073,6 +4092,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "EditarPerfil",
@@ -4101,7 +4125,8 @@ __webpack_require__.r(__webpack_exports__);
           estado: {}
         },
         anunciante: {
-          categoria: {}
+          categoria: {},
+          imagens: []
         }
       }
     };
@@ -4138,10 +4163,11 @@ __webpack_require__.r(__webpack_exports__);
     getCoordinates: function getCoordinates() {
       var self = this;
       if (!this.anunciante.endereco.lat || !this.anunciante.endereco.lng) {
+        var _this$anunciante$ende, _this$anunciante$ende2, _this$anunciante, _this$anunciante$ende3, _this$anunciante$ende4;
         var geocoder = new google.maps.Geocoder();
 
         //Endereco é logradouro + cidade + estado
-        var endereco = this.anunciante.endereco.logradouro + ', ' + this.anunciante.endereco.cidade.nome + ', ' + this.anunciante.endereco.estado.sigla;
+        var endereco = this.anunciante.endereco.logradouro + ', ' + ((_this$anunciante$ende = this.anunciante.endereco) === null || _this$anunciante$ende === void 0 ? void 0 : (_this$anunciante$ende2 = _this$anunciante$ende.cidade) === null || _this$anunciante$ende2 === void 0 ? void 0 : _this$anunciante$ende2.nome) + ', ' + ((_this$anunciante = this.anunciante) === null || _this$anunciante === void 0 ? void 0 : (_this$anunciante$ende3 = _this$anunciante.endereco) === null || _this$anunciante$ende3 === void 0 ? void 0 : (_this$anunciante$ende4 = _this$anunciante$ende3.estado) === null || _this$anunciante$ende4 === void 0 ? void 0 : _this$anunciante$ende4.sigla);
         geocoder.geocode({
           'address': endereco
         }, function (results, status) {
@@ -4223,12 +4249,24 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/anunciante/' + this.anunciante.anunciante.id + '/fotos';
       var formData = new FormData();
       formData.append('foto_principal', this.anunciante.anunciante.foto_principal);
-      axios.put(url, formData).then(function (response) {
+      if (this.anunciante.anunciante.imagens) {
+        for (var i = 0; i < this.anunciante.anunciante.imagens.length; i++) {
+          formData.append('imagens[]', this.anunciante.anunciante.imagens[i]);
+        }
+      }
+      axios.put(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
         toastr.success('Fotos salvas com sucesso!');
       });
     },
     setFotoPrincipal: function setFotoPrincipal(event) {
       this.anunciante.anunciante.foto_principal = event.target.files[0];
+    },
+    setImagens: function setImagens(event) {
+      this.anunciante.anunciante.imagens = event.target.files;
     },
     getCidades: function getCidades() {
       var _this = this;
@@ -4274,8 +4312,14 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/api/anunciante/user/' + this.userId;
       axios.get(url).then(function (response) {
         _this4.anunciante = response.data;
-        _this4.lat = _this4.anunciante.endereco.lat;
-        _this4.lng = _this4.anunciante.endereco.lng;
+        //Se o endereco nao tiver lat e lng, seta para do rio de janeiro
+        if (!_this4.anunciante.endereco.lat || !_this4.anunciante.endereco.lng) {
+          _this4.anunciante.endereco.lat = -22.2406799;
+          _this4.anunciante.endereco.lng = -43.7445063;
+        } else {
+          _this4.anunciante.endereco.lat = Number(_this4.anunciante.endereco.lat);
+          _this4.anunciante.endereco.lng = Number(_this4.anunciante.endereco.lng);
+        }
         if (_this4.anunciante.endereco.estado_id) {
           _this4.getCidades();
         }
@@ -4320,6 +4364,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -4511,7 +4557,13 @@ __webpack_require__.r(__webpack_exports__);
       this.horariosDiaSelecionado.push(horario);
     },
     removerHorario: function removerHorario(horario) {
-      var index = this.horariosDiaSelecionado.indexOf(horario);
+      //busca em horariosDiaSelecionado o valor do horario selecionado
+      var horarioSelecionado = this.horariosDiaSelecionado.find(function (data) {
+        return data.horario === horario;
+      });
+      //busca o index do horario selecionado
+      var index = this.horariosDiaSelecionado.indexOf(horarioSelecionado);
+      //remove o horario selecionado
       this.horariosDiaSelecionado.splice(index, 1);
     },
     visualizarData: function visualizarData(day) {
@@ -64170,11 +64222,53 @@ var render = function () {
                 _vm._v(" "),
                 _c("p", [
                   _vm._v(
-                    "\n                " +
+                    "\n              " +
                       _vm._s(_vm.anunciante.descricao) +
-                      "\n              "
+                      "\n            "
                   ),
                 ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "carousel slide",
+                    attrs: {
+                      id: "carouselExampleControls",
+                      "data-ride": "carousel",
+                    },
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "carousel-inner" },
+                      [
+                        _c("div", { staticClass: "carousel-item active" }, [
+                          _c("img", {
+                            staticClass: "d-block w-100",
+                            attrs: {
+                              src: _vm.anunciante.foto_principal_path,
+                              alt: "First slide",
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.anunciante.imagens, function (imagem) {
+                          return _c("div", { staticClass: "carousel-item" }, [
+                            _c("img", {
+                              staticClass: "d-block w-100",
+                              attrs: { src: imagem.full_path, alt: "" },
+                            }),
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _vm._m(1),
+                      ],
+                      2
+                    ),
+                  ]
+                ),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-4" }, [
@@ -64185,11 +64279,11 @@ var render = function () {
                           _c("i", { staticClass: "far fa-money-bill-alt" }),
                           _vm._v(" "),
                           _c("strong", [
-                            _vm._v("Valor por\n                    hora:"),
+                            _vm._v("Valor por\n                  hora:"),
                           ]),
                           _vm._v(
                             _vm._s(_vm.anunciante.valor_hora_real) +
-                              "\n                  "
+                              "\n                "
                           ),
                         ])
                       : _vm._e(),
@@ -64202,11 +64296,11 @@ var render = function () {
                       _vm._v(" "),
                       _c("strong", [_vm._v("Localização:")]),
                       _vm._v(
-                        "\n                    " +
+                        "\n                  " +
                           _vm._s(_vm.anunciante.endereco.cidade.nome) +
                           " - " +
                           _vm._s(_vm.anunciante.endereco.estado.sigla) +
-                          "\n                  "
+                          "\n                "
                       ),
                     ]),
                     _vm._v(" "),
@@ -64258,7 +64352,7 @@ var render = function () {
                               staticClass: "fa fa-envelope-o",
                               attrs: { "aria-hidden": "true" },
                             }),
-                            _vm._v(" Ver contato\n                  "),
+                            _vm._v(" Ver contato\n                "),
                           ]
                         )
                       : _c(
@@ -64270,9 +64364,9 @@ var render = function () {
                               attrs: { "aria-hidden": "true" },
                             }),
                             _vm._v(
-                              "\n                    " +
+                              "\n                  " +
                                 _vm._s(_vm.anunciante.user.phone) +
-                                "\n                  "
+                                "\n                "
                             ),
                           ]
                         ),
@@ -64293,13 +64387,71 @@ var render = function () {
               ],
               1
             ),
+            _vm._v(" "),
+            _c("div", {
+              staticStyle: {
+                width: "100%",
+                height: "400px",
+                "margin-top": "30px",
+              },
+              attrs: { id: "map" },
+            }),
           ]),
         ]
       ),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "prev",
+        },
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "next",
+        },
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -67764,37 +67916,6 @@ var render = function () {
       }),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-12 form-group" }, [
-      _c("label", [_vm._v("Valor Hora")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.anunciante.anunciante.valor_hora,
-            expression: "anunciante.anunciante.valor_hora",
-          },
-          { name: "mask-money", rawName: "v-mask-money" },
-        ],
-        staticClass: "form-control",
-        attrs: { name: "valor_hora", placeholder: "Valor Hora", type: "text" },
-        domProps: { value: _vm.anunciante.anunciante.valor_hora },
-        on: {
-          input: function ($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.anunciante.anunciante,
-              "valor_hora",
-              $event.target.value
-            )
-          },
-        },
-      }),
-    ]),
-    _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-12 form-group" }, [
@@ -67812,7 +67933,7 @@ var render = function () {
     _c("h3", [_vm._v("Galeria:")]),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-12 form-group" }, [
-      _c("label", [_vm._v("Foto principal")]),
+      _c("label", [_vm._v("Imagem principal")]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
@@ -67822,6 +67943,21 @@ var render = function () {
           type: "file",
         },
         on: { input: _vm.setFotoPrincipal },
+      }),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-12 form-group" }, [
+      _c("label", [_vm._v("Imagens")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          multiple: "",
+          name: "imagens[]",
+          placeholder: "Imagens",
+          type: "file",
+        },
+        on: { input: _vm.setImagens },
       }),
     ]),
     _vm._v(" "),
@@ -67933,6 +68069,7 @@ var render = function () {
         [
           !_vm.editandoAgenda
             ? _c("v-calendar", {
+                staticStyle: { width: "100%" },
                 attrs: { attributes: _vm.attributes, "is-expanded": "" },
                 on: { dayclick: _vm.visualizarData },
               })
@@ -68099,6 +68236,14 @@ var render = function () {
                 ],
                 2
               )
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.editandoAgenda && !_vm.diaSelecionado
+            ? _c("div", { staticStyle: { width: "100%", height: "10px" } }, [
+                _vm._v(
+                  "\n        Selecione uma data para visualizar os horários disponíveis\n      "
+                ),
+              ])
             : _vm._e(),
         ],
         1
