@@ -302,6 +302,7 @@ export default {
           })
           .catch(error => {
             console.log(error)
+            this.loading = false;
           })
     },
     adicionarData(day) {
@@ -364,6 +365,7 @@ export default {
           })
           .catch(error => {
             console.log(error)
+            this.loading = false;
           })
     }
   },

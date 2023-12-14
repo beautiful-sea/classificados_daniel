@@ -76,9 +76,13 @@
                                                 <div class="card-body">
                                                     <p><span class="title-perfil">Nome: </span> <span
                                                                 class="value-perfil">{{auth()->user()->name}}</span></p>
-                                                    <p><span class="title-perfil">Categoria: </span> <span
-                                                                class="value-perfil">{{auth()->user()->anunciante->categoria->nome}}</span>
-                                                    </p>
+                                                                <p>
+                                                                    <span class="title-perfil">Categoria: </span> 
+                                                                    <span class="value-perfil">
+                                                                        {{ auth()->user()->anunciante ? auth()->user()->anunciante->categoria->nome : 'Sem Categoria' }}
+                                                                    </span>
+                                                                </p>
+
                                                     <p><span class="title-perfil">Email: </span> <span
                                                                 class="value-perfil">{{auth()->user()->email}}</span>
                                                     </p>
@@ -97,11 +101,13 @@
                                                     <p><span class="title-perfil">CEP: </span> <span
                                                                 class="value-perfil">{{auth()->user()->endereco->cep}}</span>
                                                     </p>
-                                                    <p><span class="title-perfil">Titulo: </span> <span
-                                                                class="value-perfil">{{auth()->user()->anunciante->titulo}}</span>
+                                                    <p><span class="title-perfil">Titulo: </span> <span class="value-perfil">
+                                                                        {{ auth()->user()->anunciante ? auth()->user()->anunciante->titulo : 'Sem Titulo' }}
+                                                                    </span>
                                                     </p>
-                                                    <p><span class="title-perfil">Descrição: </span> <span
-                                                                class="value-perfil">{{auth()->user()->anunciante->descricao}}</span>
+                                                    <p><span class="title-perfil">Descrição: </span> <span class="value-perfil">
+                                                                        {{ auth()->user()->anunciante ? auth()->user()->anunciante->descricao : 'Sem Descrição' }}
+                                                                    </span>
                                                     </p>
 
 
@@ -193,11 +199,14 @@
                             <h4 class="card-title">
                                 Minhas avaliações
                             </h4>
+                            @if (auth()->user()->anunciante)
                             <p><a target="_blank" href="{{env('APP_URL')}}/avaliacao/{{auth()->user()->anunciante->slug}}">{{env('APP_URL')}}/avaliacao/{{auth()->user()->anunciante->slug}}</a></p>
-
                             <div class="row">
                                 <anunciante-avaliacoes></anunciante-avaliacoes>
                             </div>
+                            @else
+                                <p>Para ter acesso a avaliações, você precisa ter um perfil profissional.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
