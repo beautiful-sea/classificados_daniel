@@ -371,6 +371,7 @@ export default {
                 "foto_principal",
                 this.anunciante.anunciante.foto_principal
             );
+            console.log(this.anunciante.anunciante.imagens, "imagens", this.anunciante.anunciante.foto_principal, "foto principal")
             if (this.anunciante.anunciante.imagens) {
                 for (
                     let i = 0;
@@ -382,6 +383,9 @@ export default {
                         this.anunciante.anunciante.imagens[i]
                     );
                 }
+            } else {
+                toastr.error("Selecione uma imagem");
+                return;
             }
             axios
                 .put(url, formData, {
@@ -391,6 +395,9 @@ export default {
                 })
                 .then((response) => {
                     toastr.success("Fotos salvas com sucesso!");
+                }).catch(error => {
+                    toastr.error("Erro ao salvar fotos");
+                    console.log(error);
                 });
         },
         setFotoPrincipal(event) {
