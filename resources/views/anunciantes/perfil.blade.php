@@ -200,7 +200,6 @@
                                 Minhas avaliações
                             </h4>
                             @if (auth()->user()->anunciante)
-                            <p><a target="_blank" href="{{env('APP_URL')}}/avaliacao/{{auth()->user()->anunciante->slug}}">{{env('APP_URL')}}/avaliacao/{{auth()->user()->anunciante->slug}}</a></p>
                             <div class="row">
                                 <anunciante-avaliacoes></anunciante-avaliacoes>
                             </div>
