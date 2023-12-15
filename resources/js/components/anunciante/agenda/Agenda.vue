@@ -28,6 +28,7 @@
                 :attributes="attributes"
                 is-expanded
                 @dayclick="visualizarData"
+                @update:from-page="updatePages"
             />
 
             <v-calendar
@@ -67,19 +68,19 @@
                 </h3>
                 <div
                     v-for="(hds, index) in horariosDiaSelecionado"
-                    class="d-flex" style="flex-direction: column; width: 100%"
+                    class="d-flex"
+                    style="flex-direction: column; width: 100%"
                 >
                     <template v-if="hds.highlight === 'yellow'">
                         <div class="has-tooltip">
-                            <p>Você tem um agendamento nesse horário <br> clique no botão ao lado do horario para ver as informações</p>
+                            <p>
+                                Você tem um agendamento nesse horário <br />
+                                clique no botão ao lado do horario para ver as
+                                informações
+                            </p>
                         </div>
                     </template>
-                    <template v-if="hds.highlight === 'green'">
-                        <div class="has-tooltip">
-                            <p>Você tem um agendamento finalizado nesse horário</p>
-                        </div>
-                    </template>
-                    <div style="display: flex; gap: 5px;">
+                    <div style="display: flex; gap: 5px">
                         <input
                             :disabled="hds.highlight !== 'green'"
                             type="time"
@@ -408,9 +409,9 @@ export default {
                 this.attributes.splice(index, 1);
             }
         },
-        getAgendamentos() {
-            let mes = new Date().getMonth() + 1;
-            let ano = new Date().getFullYear();
+        getAgendamentos(month = 0, year = 0) {
+            let mes = month || new Date().getMonth() + 1;
+            let ano = year || new Date().getFullYear();
             let url = "/anunciantes/agendamentos?mes=" + mes + "&ano=" + ano;
             this.loading = true;
             this.attributes = [];
@@ -448,6 +449,9 @@ export default {
                     console.log(error);
                     this.loading = false;
                 });
+        },
+        updatePages({ month, year }) {
+            this.getAgendamentos(month, year);
         },
     },
     created() {
