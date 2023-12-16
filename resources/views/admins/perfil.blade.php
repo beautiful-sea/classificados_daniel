@@ -75,7 +75,7 @@
 
                                            @foreach($estados as $estado)
 
-                                            <option value="{{$estado->id}}" {!! auth()->user()->endereco->estado_id === $estado->id?'selected="true"':'' !!}  >{{$estado->nome}}</option>
+                                            <option value="{{$estado->id}}" {!! auth()->user()->endereco && auth()->user()->endereco->estado_id === $estado->id?'selected="true"':'' !!}  >{{$estado->nome}}</option>
                                            @endforeach
 
                                         </select>
@@ -83,7 +83,7 @@
                                     <div class="col-12 col-sm-6 mb-1">
                                         <label class="form-label" for="country">Cidade</label>
                                         <select id="cidade" name="cidade_id" class="select2 form-select">
-                                            @if(auth()->user()->endereco->cidade_id)
+                                            @if(auth()->user()->endereco && auth()->user()->endereco->cidade_id)
                                                 <option value="{{auth()->user()->endereco->cidade_id}}" selected>{{auth()->user()->endereco->cidade->nome}}</option>
                                             @else
                                             <option value="0" >Selecione sua cidade</option>
