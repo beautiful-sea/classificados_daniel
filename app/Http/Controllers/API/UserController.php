@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -88,8 +89,20 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
-        //
+        //Deleta o usuário junto com o relacionamento com o tipo de usuário dependendo do tipo de usuário
+        $user = User::findOrFail($id);
+        if ($user->role == 'administrador') {
+            $user->administrador()->delete();
+        } elseif ($user->role == 'visitante') {
+            $user->visitante()->delete();
+        } elseif ($user->role == 'anunciante') {
+            $user->anunciante()->delete();
+        }
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuário deletado com sucesso!');
     }
 }

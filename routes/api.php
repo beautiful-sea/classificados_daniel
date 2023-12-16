@@ -69,6 +69,7 @@ Route::group([], function () {
         Route::post('/campos_avaliacoes', [\App\Http\Controllers\Admin\CamposAvaliacaoController::class, 'store']);
         Route::delete('/campos_avaliacoes/{id}', [\App\Http\Controllers\Admin\CamposAvaliacaoController::class, 'destroy']);
         Route::put('/campos_avaliacoes/{id}', [\App\Http\Controllers\Admin\CamposAvaliacaoController::class, 'update']);
+        Route::get('/usuarios/{id}', [\App\Http\Controllers\Admin\UserController::class, 'destroy']);
 
     });
 });
