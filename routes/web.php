@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::get('perfil', [App\Http\Controllers\Admin\UserController::class, 'perfil'])->name('perfil');
+        Route::get('/config', [App\Http\Controllers\Admin\UserController::class, 'config'])->name('config');
         Route::put('/perfil/update', [App\Http\Controllers\Admin\UserController::class, 'perfilUpdate'])->name('update');
         Route::get('usuarios/{usuario}', [App\Http\Controllers\Admin\UserController::class, 'show']);
         Route::get('usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('usuarios');

@@ -267,4 +267,8 @@ class UserController extends Controller
 
         return redirect()->route('admin.perfil')->with('success', 'Perfil atualizado com sucesso!');
     }
+
+    public function config (Request $request) {
+        return view('admins.config');
+    }
 }
