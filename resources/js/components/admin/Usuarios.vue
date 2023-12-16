@@ -168,6 +168,15 @@
                                         >
                                             Excluir
                                         </button>
+                                        <button
+                                            type="button"
+                                            class="btn btn-warning btn-table"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editModal"
+                                            @click="selectedUser = user"
+                                        >
+                                            Editar
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -226,7 +235,61 @@
                 </div>
             </div>
 
-            <!--/ Delete Permission Modal -->
+            <!-- Edit User Modal -->
+            <div
+                class="modal fade"
+                id="editModal"
+                tabindex="-1"
+                aria-labelledby="editModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">
+                                Editar Usuário
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <template v-if="selectedUser">
+                                <label>Tipo do usuario: </label>
+                                <select
+                                    v-model="selectedUser.role"
+                                    class="form-select"
+                                >
+                                    <option value="admin">Admin</option>
+                                    <option value="anunciante">
+                                        Anunciante
+                                    </option>
+                                    <!-- Outros papéis -->
+                                </select>
+                            </template>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                @click="editUser"
+                            >
+                                Salvar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -275,6 +338,22 @@ export default {
                 })
                 .catch((error) => {
                     toastr.error("Erro ao excluir usuário!");
+                    console.log(error);
+                });
+        },
+        editUser() {
+            console.log(this.selectedUser);
+            axios
+                .post("/api/admin/usuarios/" + this.selectedUser.id +"/role", {
+                    role: this.selectedUser.role,
+                })
+                .then((response) => {
+                    this.getUsers();
+                    $("#editModal").modal("hide");
+                    toastr.success("Papel do usuário atualizado com sucesso!");
+                })
+                .catch((error) => {
+                    toastr.error("Erro ao atualizar papel do usuário!");
                     console.log(error);
                 });
         },

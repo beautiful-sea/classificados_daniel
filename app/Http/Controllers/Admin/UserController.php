@@ -175,6 +175,29 @@ class UserController extends Controller
 
     }
 
+    public function updateRole(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'role' => 'required'
+            ],[
+                'role.required' => 'O campo tipo de usuário é obrigatório'
+            ]);
+
+            $user = User::findOrFail($id);
+            $user->role = $request->role;
+            $user->save();
+
+            DB::commit();
+            return redirect()->route('admin.users.index')->with('success', 'Papel do usuário atualizado com sucesso!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.users.index')->with('error', 'Erro ao atualizar o papel do usuário!');
+        }
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
