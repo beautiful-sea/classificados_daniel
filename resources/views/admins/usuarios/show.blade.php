@@ -43,8 +43,12 @@
                                         </li>
                                         <li class="mb-75">
                                             <span class="fw-bolder me-25">Url:</span>
+                                            @if($user->anunciante && $user->anunciante->slug)
                                             <a href="{{env('APP_URL').'/anunciante/'.$user->anunciante->slug}}"
                                                target="_blank">{{env('APP_URL').'/anunciante/'.$user->anunciante->slug}}</a>
+                                               @else
+                                                <span>Não possui link anunciante</span>
+                                            @endif
                                         </li>
                                     </ul>
                                     {{--                                    <div class="d-flex justify-content-center pt-2">--}}
@@ -63,6 +67,8 @@
                         <!--/ User Sidebar -->
                         <div class="col-12">
 
+                        @if($user->anunciante)
+
                             <!-- Project table -->
                             <div class="card">
                                 <h4 class="card-header">Informações</h4>
@@ -77,12 +83,40 @@
                                             <p><b>Título: </b> {{$user->anunciante->titulo}}</p>
                                             <p><b>Descrição: </b> {{$user->anunciante->descricao}}</p>
                                             <p><b>Endereço: </b> {{$user->anunciante->endereco->logradouro}}</p>
+                                            @if($user->anunciante->endereco->cidade)
                                             <p><b>Cidade: </b> {{$user->anunciante->endereco->cidade->nome}}</p>
+                                            @else
+                                            <p><b>Cidade: </b> Não possui</p>
+                                            @endif
+                                            @if($user->anunciante->endereco->estado)
                                             <p><b>Estado: </b> {{$user->anunciante->endereco->estado->nome}}</p>
+                                            @else
+                                            <p><b>Estado: </b> Não possui</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            @else 
+
+                            <div class="card">
+                                <h4 class="card-header">Informações</h4>
+
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p><b>Título: </b> Não possui</p>
+                                            <p><b>Descrição: </b> Não possui</p>
+                                            <p><b>Endereço: </b> Não possui</p>
+                                            <p><b>Cidade: </b> Não possui</p>
+                                            <p><b>Estado: </b> Não possui</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                            @endif
 
                         </div>
                         <!-- User Content -->

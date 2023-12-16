@@ -70,6 +70,7 @@ Route::group([], function () {
         Route::delete('/campos_avaliacoes/{id}', [\App\Http\Controllers\Admin\CamposAvaliacaoController::class, 'destroy']);
         Route::put('/campos_avaliacoes/{id}', [\App\Http\Controllers\Admin\CamposAvaliacaoController::class, 'update']);
         Route::get('/usuarios/{id}', [\App\Http\Controllers\Admin\UserController::class, 'destroy']);
+        Route::post('/usuarios/{id}/role', [\App\Http\Controllers\Admin\UserController::class, 'updateRole']);
 
     });
 });
