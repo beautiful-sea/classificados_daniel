@@ -13,7 +13,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'forgotPassword', 'showRecoveryPassword', 'recoveryPassword']]);
     }
     public function login()
     {
@@ -124,6 +124,58 @@ class AuthController extends Controller
         }catch(\Exception $e){
 
             return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function forgotPassword(Request $request){
+        try{
+            $data = $request->all();
+            $validator = \Validator::make($data, [
+                'email' => 'required|string|email|max:255',
+            ]);
+            if($validator->fails()){
+                return redirect('/login')->with('error', 'Email inválido');
+            }
+            $user = \App\Models\User::where('email', $data['email'])->first();
+            if(!$user){
+                return redirect('/login')->with('error', 'Email não encontrado');
+            }
+            $token = \Str::random(60);
+            $user->password_reset_token = $token;
+            $user->save();
+            //Envia email
+            $user->notify(new \App\Notifications\ResetPasswordNotification($token));
+            return redirect('/login')->with('success', 'Email enviado com sucesso');
+        }catch(\Exception $e){
+            return redirect('/login')->with('error', 'Erro ao enviar email');
+        }
+    }
+
+    public function showRecoveryPassword($token){
+        return view('auth.recovery', ['token' => $token]);
+    }
+
+    public function recoveryPassword(Request $request){
+        try{
+            $data = $request->all();
+            $password_reset_token = $data['token'];
+            $validator = \Validator::make($data, [
+                'token' => 'required|string|max:255',
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+            if($validator->fails()){
+                return redirect('/login')->with('error', 'Token inválido');
+            }
+            $user = \App\Models\User::where('password_reset_token', $password_reset_token)->first();
+            if(!$user){
+                return redirect('/login')->with('error', 'Token inválido');
+            }
+            $user->password = bcrypt($data['password']);
+            $user->password_reset_token = null;
+            $user->save();
+            return redirect('/login')->with('success', 'Senha alterada com sucesso');
+        }catch(\Exception $e){
+            return redirect('/login')->with('error', 'Erro ao alterar senha');
         }
     }
 }

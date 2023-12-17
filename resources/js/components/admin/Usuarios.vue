@@ -330,7 +330,7 @@ export default {
         },
         deleteUser() {
             axios
-                .get("/api/admin/usuarios/" + this.selectedUser.id)
+                .delete("/api/admin/usuarios/" + this.selectedUser.id)
                 .then((response) => {
                     this.getUsers();
                     $("#deleteModal").modal("hide");
