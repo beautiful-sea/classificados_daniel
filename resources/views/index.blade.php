@@ -16,39 +16,27 @@
 @section('content')
 
     <!-- Hero Section -->
-    <div class="gradient-overlay-half-primary-v1 bg-img-hero" style="background-image: url(/images/app.jpg);">
+    <div class="bg-img-hero" style="background-image: url('/images/background.jpg')">
         <div class="container space-2 space-4-top--lg space-3-bottom--lg">
             <div class="row align-items-lg-center">
                 <div class="col-lg-12 mb-lg-0">
                     <!-- Description -->
-                    <div class="pr-lg-12 mb-5">
-                        <h1 class="display-4 font-size-48--md-down text-white">Encontre Profissionais Qualificados</h1>
-                        <p class="lead text-white">Pesquise, compare e escolha entre {{$texto_total_profissionais}} profissionais disponíveis</p>
+                    <div class="pr-lg-12 mb-5 content-title-home">
+                        <h1 class="display-4 font-size-48--md-down text-white title-home">Buscando Profissionais?</h1>
+                        <h1 class="display-4 font-size-36--md-down text-white subtitle-home">Temos a solução!</h1>
                     </div>
                     <form action="/categorias" class="cflyformtheme cflyformbannersearch">
                         <fieldset>
-                            <div class="form-group cflyinputwithicon" ><i class="fas fa-bullhorn"></i>
+                            <div class="form-group cflyinputwithicon" ><i class="fas fa-search"></i>
                                 <input type="text" name="q" class="form-control"
-                                       placeholder="O que você procura?">
+                                       placeholder="Pesquise por um profissional">
                             </div>
-                            {{--                            <div class="form-group cflyinputwithicon"> <i class="far fa-paper-plane"></i> <a class="cflybtnsharelocation fa fa-crosshairs" href="javascript:void(0);"></a>--}}
-                            {{--                            <input type="text" name="yourlocation" class="form-control" placeholder="Localização">--}}
-                            {{--                            </div>--}}
-{{--                            <div class="form-group cflyinputwithicon " >--}}
-{{--                                <i class="fab fa-staylinked"></i>--}}
-{{--                                <div class="cflyselect ">--}}
-{{--                                    <select>--}}
-{{--                                        <option value="none">Categoria</option>--}}
-{{--                                        @foreach ($categorias as $categoria)--}}
-{{--                                            <option value="{{$categoria->id}}">{{$categoria->nome}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <button class="cflybtn" type="submit">Buscar</button>
                         </fieldset>
                     </form>
-
+                    <div class="pr-lg-12 mb-5 content-title-home">
+                        <h1 class="display-4 font-size-18--md-down text-white more-title-home">Pesquise, compare e escolha.</h1>
+                    </div>
                     <!-- End Description -->
                 </div>
             </div>
@@ -58,13 +46,6 @@
 
     <div class="whiteBG pt80 pb60 portfolio">
         <div class="container space-2 space-3--lg">
-            <!-- Title -->
-            <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-                <h2 class="h3">Conheça nossos <strong>Profissionais</strong></h2>
-                <p>Veja algum dos serviços disponíveis em nossa plataforma </p>
-            </div>
-            <!-- End Title -->
-
             <div class="row">
                 <tabs-anunciantes></tabs-anunciantes>
             </div>

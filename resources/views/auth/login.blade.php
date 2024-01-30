@@ -2,7 +2,7 @@
 @section('title','Login')
 @section('content')
 
-<section class="login-area">
+<section class="login-area" style="height: calc(100vh - 85px) background-image: url('/images/background.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -25,8 +25,8 @@
                     </div>
                 @endif
                     <div class="login-top">
-                        <h3 id="formTitle">Bem-vindo de volta!</h3>
-                        <p id="formDescription">Faça login na sua conta.</p>
+                        <h3 id="formTitle" class="title-login">Bem-vindo!</h3>
+                        <p id="formDescription" class="title-login">Faça login na sua conta.</p>
                     </div>
                     
                     <!-- Formulário de Login -->
@@ -34,12 +34,12 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-12 email">
-                                <label>Email</label>
-                                <input type="text" name="email" placeholder="Seu e-mail aqui">
+                                <label class="title-login">Email</label>
+                                <input class="input" type="text" name="email" placeholder="Seu e-mail aqui">
                             </div>
                             <div class="col-md-12 password">
-                                <label>Senha</label>
-                                <input type="password" name="password" placeholder="Sua senha aqui">
+                                <label class="title-login">Senha</label>
+                                <input class="input" type="password" name="password" placeholder="Sua senha aqui">
                             </div>
                             <div class="col-12">
                                 @if($errors->any())
@@ -53,7 +53,7 @@
                                 @endif
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" name="button">Entrar</button>
+                                <button class="button-login" type="submit" name="button">Entrar</button>
                             </div>
                         </div>
                     </form>
@@ -64,11 +64,11 @@
                         @method('POST')
                         <div class="row">
                             <div class="col-md-12 email">
-                                <label>Email para recuperação de senha</label>
-                                <input type="email" name="email" placeholder="Digite seu e-mail">
+                                <label class="title-login">Email para recuperação de senha</label>
+                                <input class="input" type="email" name="email" placeholder="Digite seu e-mail">
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Recuperar Senha</button>
+                                <button type="submit" class="btn btn-primary button-login">Recuperar Senha</button>
                             </div>
                         </div>
                     </form>
@@ -76,14 +76,14 @@
                     <div class="col-md-12 d-flex justify-content-between align-items-center mt-3">
                         <div class="chqbox" id="rememberMeContainer">
                             <input type="checkbox" name="rememberme" id="rmme">
-                            <label for="rmme">Lembre de mim</label>
+                            <label for="rmme" class="title-login">Lembre de mim</label>
                         </div>
                         <div class="forget-btn">
                             <a href="#" id="forgotPasswordLink">Esqueceu a senha?</a>
                         </div>
                     </div>
 
-                    <div class="col-md-12 text-center" id="backToLogin" style="display:none;">
+                    <div class="col-md-12 text-center forget-btn" id="backToLogin" style="display:none;">
                         <a href="#" id="backToLoginLink">Voltar para Login</a>
                     </div>
                 </div>

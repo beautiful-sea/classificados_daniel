@@ -1,25 +1,13 @@
 @extends('layouts.app')
 @section('title','Perfil Profissional')
 @section('content')
-
-    <!-- Hero Section -->
-    <div class="gradient-overlay-half-primary-v1 bg-img-hero innerCategoryList dashboard"
-         style="background-image: url(/images/app.jpg);">
-        <div class="container space-2 space-4-top--lg space-3-bottom--lg">
-            <div class="row align-items-lg-center">
-                <div class="col-lg-12 mb-lg-0">
-                    <h2>Perfil Profissional</h2>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- End Hero Section -->
 
     <section class="grayBG pt80 pb50 GridList adsDetails OurServices dashboardsection">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="tab-vertical tab-vertical-md py-5 mr-lg-7">
+                    <div class="tab-vertical tab-vertical-md py-5 mr-lg-7 tab-professional">
                         <div class="pr-md-7 mb-5">
                             <div class="author_img">
                                 @if(auth()->user()->photo_path)

@@ -3,78 +3,34 @@
     <div class="row">
 
       <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 page-details perfil-container">
-        <h2>{{ anunciante.user.name }} <span style="background-color: grey;">{{ anunciante.categoria.nome }}</span></h2>
-
+        <div class="content-header-anunciante">
+          <div class="seller-details">
+            <div class="content-image-anunciante-perfil">
+              <img class="image-anunciante-perfil" :src="anunciante.foto_perfil" />
+            </div>
+            <div class="information-anunciante">
+              <p>{{ anunciante.user.name }}</p>
+              <p>Área de atuação: {{ anunciante.categoria.nome }} </p>
+            </div>
+          </div>
+          <div class="content-mapa-anunciante">
+            <div id="map" class="mapa"></div>
+          </div>
+        </div>
 
         <div class="single-page-details">
 
           <div class="row">
             <div class="sindetails-info col-md-8">
-              <h5>{{ anunciante.titulo }}</h5>
+              <h3>Experiência</h3>
               <p>
                 {{ anunciante.descricao }}
               </p>
-              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" :src="anunciante.foto_principal_path" alt="First slide">
-                  </div>
-                  <div class="carousel-item " v-for="imagem in anunciante.imagens">
-                    <img class="d-block w-100" :src="imagem.full_path"  alt="">
-                  </div>
-
-                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-
-
-              </div>
-
-            </div>
-            <div class="col-md-4">
-              <div class="shot-info">
-                <ul>
-
-                  <li v-if="anunciante.valor_hora"><i class="far fa-money-bill-alt"></i> <strong>Valor por
-                    hora:</strong>{{ anunciante.valor_hora_real }}
-                  </li>
-
-                  <li><i class="fa fa-globe" aria-hidden="true"></i> <strong>Localização:</strong>
-                    {{ anunciante.endereco.cidade.nome }} - {{ anunciante.endereco.estado.sigla }}
-                  </li>
-                  <li><i class="fas fa-award"></i> <strong>Profissão:</strong>{{ anunciante.categoria.nome }}</li>
-                </ul>
-              </div>
-              <div class="contact-seller">
-
-                <div class="seller-details"><img :src="anunciante.foto_perfil">
-                  <p><i class="fas fa-user"></i> {{ anunciante.user.name }}</p>
-                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> Localização: {{
-                      anunciante.endereco.cidade.nome
-                    }} </p>
-                </div>
-                <div class="seller_message">
-                  <button v-if="!showContato" @click="salvarCliqueContato()" class="btn btn-success btn-block"><i
-                      class="fa fa-envelope-o" aria-hidden="true"></i> Ver contato
-                  </button>
-                  <button v-else class="btn btn-success btn-block"><i class="far fa-whatsapp" aria-hidden="true"></i>
-                    {{ anunciante.user.phone }}
-                  </button>
-                </div>
-              </div>
-
             </div>
           </div>
-          <div class="row">
+          <div class="row content-agenda">
             <agendar v-if="anunciante.id" :anunciante_id="anunciante.id"></agendar>
           </div>
-          <div id="map" style="width: 100%; height: 400px; margin-top:30px"></div>
         </div>
       </div>
     </div>

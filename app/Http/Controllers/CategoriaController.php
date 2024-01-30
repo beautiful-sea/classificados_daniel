@@ -12,17 +12,21 @@ class CategoriaController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {
-        $termo = $request->q;
-        if($termo){
-            $ip = $request->ip();
-            \App\Models\HistoricoPesquisa::create([
-                'termo' => $termo,
-                'ip' => $ip,
-            ]);
-        }
+{
+    $termo = $request->q;
+    $categoriaId = $request->query('c');
+
+    $categoria = \App\Models\Categoria::find($categoriaId); 
 
 
-        return view('categorias');
+    if($termo){
+        $ip = $request->ip();
+        \App\Models\HistoricoPesquisa::create([
+            'termo' => $termo,
+            'ip' => $ip,
+        ]);
     }
+
+    return view('categorias', ['categoria' => $categoria]);
+}
 }

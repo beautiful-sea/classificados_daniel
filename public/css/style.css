@@ -1133,7 +1133,7 @@ a.navbar-brand img {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: top center;
-	padding: 210px 0;
+	padding: 150px 0;
 }
 .gradient-overlay-half-primary-v1::before {
  background-image: linear-gradient(30deg, rgba(121, 110, 255, 0.95) 0%, rgba(33, 200, 122, 0.95) 100%);
@@ -10515,4 +10515,274 @@ div#form {
     padding: 2px 6px;
     margin: 0 0 0 8px;
     border-radius: 6px;
+}
+
+.content-title-home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle-home {
+	padding-top: 0px;
+	color: #2198E1 !important;
+	font-size: 2rem;
+}
+
+.title-home {
+	color: #2198E1 !important;
+}
+
+.navbar-application {
+	background-color: #2198E1 !important;
+}
+
+.portfolio {
+	background-color: #2198E1 !important;
+}
+
+.more-title-home {
+	padding-top: 60px;
+	color: #2198E1 !important;
+	font-size: 2rem;
+}
+
+.cflybtn::before {
+	background: #2198E1 !important;
+}
+
+.cflyformtheme {
+	border: 2px solid #ddd;
+	margin-top: 0px;
+}
+
+.category-title {
+	color: #2198E1 !important;
+}
+
+.button-login {
+	background-color: #FFF !important;
+	border-color: #FFF !important;
+	color: #2198E1 !important;
+}
+
+.navbar-brand:hover {
+	background-color: transparent !important;
+}
+
+.nav-link {
+	color: #FFF !important;
+}
+
+.card-title-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.username-user {
+	color: #2198E1 !important;
+}
+
+.card-title {
+	display: flex;
+	justify-content: center;
+}
+
+.information {
+	color: #2198E1 !important;
+}
+
+.card-title a:hover {
+	color: #2198E1 !important;
+}
+
+.content-image-anunciante {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.image-anunciante {
+	border-radius: 10px;
+	height: 190px;
+	width: 90%;
+	object-fit: cover;
+}
+
+.content-view-more {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.button-view-more {
+	background-color: #2198E1 !important;
+	border-radius: 10px;
+	min-width: 55%;
+	min-height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.view-more {
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: #FFF !important;
+}
+
+.seller-details {
+	display: flex;
+}
+
+.content-image-anunciante-perfil {
+	margin-right: 15px;
+}
+
+.image-anunciante-perfil {
+	height: 150px;
+	border-radius: 10px;
+}
+
+.content-agenda {
+	margin-top: 50px;
+}
+
+.content-header-anunciante {
+	display: flex;
+	position: relative;
+}
+
+.mapa {
+	overflow: visible !important;
+	position: absolute !important;
+	right: 0;
+	width: 380px;
+}
+
+.information-anunciante {
+	max-width: 250px;
+}
+
+.login-box {
+	background-color: #2198E1 !important;
+	border-top: 0px !important;
+}
+
+.input {
+	background-color: #2198E1 !important;
+	color: #FFF !important;
+}
+
+.input::placeholder {
+	color: #FFF !important;
+}
+
+.button-login {
+	background-color: #FFF !important;
+	border-color: #FFF !important;
+	color: #2198E1 !important;
+}
+
+.forget-btn a {
+	color: #FFF !important;
+}
+
+.title-login {
+	color: #FFF !important;
+}
+
+.content-card-categorias {
+	max-width: 100%;
+	flex: 0 0 100%;
+}
+
+.content-title-categoria-page {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.content-title-categoria-page h1 {
+	margin-left: 20px;
+	font-size: 2rem;
+	color: #2198E1 !important;
+}
+
+.items-padding-category {
+	padding: 60px 240px;
+	width: 100%;
+}
+
+.card-category {
+	margin: 0px 20px;
+}
+
+.body-category {
+	width: 100%;
+	display: flex;
+	background-color: #2198E1 !important;
+}
+
+.tab-professional {
+	background-color: #2198E1 !important;
+	border-radius: 10px;
+}
+
+.nav-link.active {
+	background-color: #FFF !important;
+	color: #2198E1 !important;
+}
+
+.tab-vertical__nav-link.active::after {
+	background-color: #FFF !important;
+}
+
+.author_img img {
+	border: 4px solid #FFF;
+}
+
+.author_imgtitle {
+	color: #FFF !important;
+}
+
+.card-title a {
+	color: #2198E1 !important;
+}
+
+.btn-success {
+	background-color: #2198E1 !important;
+	border-color: #2198E1 !important;
+	color: #FFF !important;
+}
+
+.perfil-nome, .perfil-email {
+	color: #FFF !important;
+}
+
+.avatar-content a img {
+	border: 1px solid #FFF;
+}
+
+.avatar-content a img:hover {
+	border: 1px solid #2198E1;
+}
+
+.inner-box ul li a:hover {
+	color: #2198E1 !important;
+}
+
+.sindetails-info {
+	max-width: 460px;
+}
+
+.navbar-nav .dropdown-menu:before {
+	background-color: #2198E1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+	background-color: #2198E1 !important;
+	color: #FFF !important;
 }
